@@ -1,0 +1,14 @@
+extends Node3D
+
+
+
+func _ready() -> void:
+	# Capture mouse cursor for FPS controls
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+func _input(event: InputEvent) -> void:
+	# Handle mouse movement for camera rotation
+	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
+		$"../ColorRect/SubViewport/Environment/Player".get_mouse_data(event)
+	
+	if event.is_action_pressed("sprint"):
+		$"../ColorRect/SubViewport/Environment/enemy_1".trigger_random_movement()
