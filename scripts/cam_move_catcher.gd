@@ -1,6 +1,6 @@
 extends Node3D
 
-
+signal interact
 
 func _ready() -> void:
 	# Capture mouse cursor for FPS controls
@@ -10,5 +10,6 @@ func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
 		$"../ColorRect/SubViewport/Environment/Player".get_mouse_data(event)
 	
-	if event.is_action_pressed("sprint"):
-		$"../ColorRect/SubViewport/Environment/enemy_1".trigger_random_movement()
+	if event.is_action_pressed("interact"):
+		interact.emit()
+	

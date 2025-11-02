@@ -1,6 +1,4 @@
 extends CharacterBody3D
-## Classic Doom 2-Style First Person Character Controller
-## 
 ## This script provides arcade-style FPS movement with instant acceleration,
 ## high speeds, and classic strafe-running mechanics inspired by Doom 2.
 ##
@@ -19,7 +17,7 @@ extends CharacterBody3D
 # ============================================================================
 
 ## Base movement speed in units per second (Doom-style is fast!)
-@export_range(5.0, 20.0, 0.5) var base_speed: float = 12.0
+@export_range(1.0, 20.0, 0.5) var base_speed: float = 12.0
 
 ## Sprint multiplier when holding shift
 @export_range(1.0, 2.0, 0.1) var sprint_multiplier: float = 1.5

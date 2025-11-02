@@ -1,0 +1,9 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://dr0g4i4nhvd2r"]
+
+[ext_resource type="FontFile" uid="uid://dhvx4kk6q8b61" path="res://Misc/Tektur-VariableFont_wdth,wght.ttf" id="1_0fnw2"]
+
+[resource]
+font = ExtResource("1_0fnw2")
+font_size = 18
+shadow_size = 6
+shadow_color = Color(0, 0, 0, 1)
