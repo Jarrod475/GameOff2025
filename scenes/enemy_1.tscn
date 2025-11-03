@@ -225,9 +225,8 @@ billboard = 2
 shaded = true
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_272bh")
-animation = &"walk_right"
+animation = &"walk_forward"
 autoplay = "walk_forward"
-frame_progress = 0.43595535
 speed_scale = 0.8
 
 [node name="light" type="OmniLight3D" parent="GFX"]

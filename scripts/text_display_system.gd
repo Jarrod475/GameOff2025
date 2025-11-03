@@ -4,11 +4,18 @@ var running = false
 var current_speed = 1.0
 var current_timeout = 5.0
 
+@onready var white_theme = preload("res://Misc/human_talking.tres")
+@onready var orange_theme = preload("res://Misc/Charley_talking.tres")
 
 ##call this function to display text on the hud.
 ##timeout is the time it will wait until hiding the text box
 ##speed changes how quickly the text is displayed
-func display_text(text_to_display : String, speed = 2.5,timeout = 5):
+##alternate text changes the text to the secondary theme with orange colour
+func display_text(text_to_display : String, speed = 2.5,timeout = 5,alternate_text = false):
+	if alternate_text == true:
+		label_settings = orange_theme
+	else :
+		label_settings = white_theme
 	current_timeout = timeout
 	current_speed = speed
 	visible_ratio = 0

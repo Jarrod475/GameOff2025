@@ -1,10 +1,11 @@
-[gd_scene load_steps=63 format=4 uid="uid://b8ukmu7f0x14n"]
+[gd_scene load_steps=67 format=4 uid="uid://b8ukmu7f0x14n"]
 
 [ext_resource type="Script" uid="uid://d3y7ouwo6arvx" path="res://scripts/cam_move_catcher.gd" id="1_o2wmi"]
 [ext_resource type="Shader" uid="uid://ddwxq4yfo2i7h" path="res://crt_shader.gdshader" id="2_7or65"]
-[ext_resource type="LabelSettings" uid="uid://dr0g4i4nhvd2r" path="res://Misc/label_settings_1.tres" id="3_3lhed"]
+[ext_resource type="LabelSettings" uid="uid://dr0g4i4nhvd2r" path="res://Misc/human_talking.tres" id="3_3lhed"]
 [ext_resource type="FontFile" uid="uid://dhvx4kk6q8b61" path="res://Misc/Tektur-VariableFont_wdth,wght.ttf" id="3_pamum"]
 [ext_resource type="Script" uid="uid://d1n5jun2yi08y" path="res://scripts/text_display_system.gd" id="4_3lhed"]
+[ext_resource type="Texture2D" uid="uid://5kelp4ja8u12" path="res://textures/gun_1_test.png" id="4_5yih7"]
 [ext_resource type="Script" uid="uid://cmcsgpkuyjryh" path="res://scripts/terminal.gd" id="5_3lhed"]
 [ext_resource type="Script" uid="uid://df72omaqd31gt" path="res://scripts/player.gd" id="5_e6acm"]
 [ext_resource type="Script" uid="uid://dn4dfnipxxggb" path="res://scripts/intro_manager.gd" id="5_gh3nu"]
@@ -15,6 +16,58 @@
 [ext_resource type="Texture2D" uid="uid://bjpoy6erp03hb" path="res://sprites/robot_walk_backt.png" id="12_5yih7"]
 [ext_resource type="Texture2D" uid="uid://ds1abapqe8xab" path="res://sprites/robot_walk_right.png" id="13_ppeh2"]
 [ext_resource type="Texture2D" uid="uid://dacgxdra3o1cl" path="res://sprites/robot_walk_left.png" id="14_8qonc"]
+[ext_resource type="PackedScene" uid="uid://4ln7quvtnp76" path="res://scenes/enemy_1.tscn" id="17_ppeh2"]
+
+[sub_resource type="Animation" id="Animation_ppeh2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect/SubViewport/Environment/floor_light:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect/SubViewport/Environment/floor_light2:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ColorRect/SubViewport/Environment/floor_light3:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ColorRect/SubViewport/Environment/terminal:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_5yih7"]
 resource_name = "intro_anim_lights"
@@ -69,57 +122,6 @@ tracks/3/keys = {
 "values": [false, true]
 }
 
-[sub_resource type="Animation" id="Animation_ppeh2"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("ColorRect/SubViewport/Environment/floor_light:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("ColorRect/SubViewport/Environment/floor_light2:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("ColorRect/SubViewport/Environment/floor_light3:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("ColorRect/SubViewport/Environment/terminal:visible")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ppeh2"]
 _data = {
 &"RESET": SubResource("Animation_ppeh2"),
@@ -159,6 +161,17 @@ shader_parameter/min_scanline_thickness = 0.75000002375
 shader_parameter/aspect = 0.75
 shader_parameter/wobble_strength = 0.0
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_8qonc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_5yih7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [sub_resource type="Animation" id="Animation_gh3nu"]
 length = 0.001
 tracks/0/type = "value"
@@ -188,7 +201,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_rhxg2"]
 resource_name = "intro_boot_up"
-length = 10.0
+length = 12.0
 step = 0.3333
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -197,8 +210,8 @@ tracks/0/path = NodePath("screen/label_top:text")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(4, 5, 6, 7, 8, 9, 10),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(4, 5, 6, 7, 8, 9, 10, 12),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": ["", "/.Charley-9
 ", "/.Charley-9
@@ -222,7 +235,13 @@ tracks/0/keys = {
 /install -admin 
 /dev/arcodefense/main/server3/Charley/defense_update_1.3452.pkg
 /restart -fqnr
-"]
+", "/.Charley-9
+/restart -f
+/list main --pkg -sh 
+/install -admin 
+/dev/arcodefense/main/server3/Charley/defense_update_1.3452.pkg
+/restart -fqnr
+Install complete  in 12.23 seconds."]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -519,6 +538,10 @@ shadow_mesh = SubResource("ArrayMesh_1ewt4")
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_kek77"]
 data = PackedVector3Array(0.5, -0.5, 0, -0.5, -0.5, 0, 0.5, 0.5, 0, -0.5, -0.5, 0, -0.5, 0.5, 0, 0.5, 0.5, 0)
 
+[sub_resource type="NavigationMesh" id="NavigationMesh_ppeh2"]
+vertices = PackedVector3Array(0.5, -0.5, 0, -0.5, -0.5, 0, 0.5, 0.5, 0, -0.5, 0.5, 0)
+polygons = [PackedInt32Array(0, 1, 2), PackedInt32Array(1, 3, 2)]
+
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_272bh"]
 radius = 0.34033203
 height = 2.243103
@@ -565,6 +588,11 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="weapon_sprite" type="AnimatedSprite2D" parent="ColorRect/SubViewport/HUD"]
+position = Vector2(220, 320)
+scale = Vector2(0.75, 0.75)
+sprite_frames = SubResource("SpriteFrames_8qonc")
 
 [node name="text_display_bottom" type="Label" parent="ColorRect/SubViewport/HUD"]
 layout_mode = 1
@@ -665,7 +693,7 @@ autowrap_mode = 1
 width = 171.95
 
 [node name="Floor" type="MeshInstance3D" parent="ColorRect/SubViewport/Environment"]
-transform = Transform3D(5, 0, 0, 0, -1.2167064e-06, 5, 0, -27.835, -2.1855695e-07, 3.2647302, 0, 15.770051)
+transform = Transform3D(15.95953, 0, 0, 0, -1.7806151e-06, 5, 0, -40.735725, -2.1855695e-07, 3.2647302, 0, 15.770051)
 mesh = SubResource("QuadMesh_kek77")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="ColorRect/SubViewport/Environment/Floor"]
@@ -673,8 +701,12 @@ mesh = SubResource("QuadMesh_kek77")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ColorRect/SubViewport/Environment/Floor/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_kek77")
 
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="ColorRect/SubViewport/Environment/Floor"]
+navigation_mesh = SubResource("NavigationMesh_ppeh2")
+
 [node name="Player" type="CharacterBody3D" parent="ColorRect/SubViewport/Environment" groups=["player"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.0740414, 1.537142, 27.799767)
+collision_mask = 3
 script = ExtResource("5_e6acm")
 base_speed = 8.0
 bob_amplitude = 0.13
@@ -689,6 +721,7 @@ shape = SubResource("CapsuleShape3D_272bh")
 
 [node name="boundary_1" type="StaticBody3D" parent="ColorRect/SubViewport/Environment"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0580685, 0, 14.475942)
+collision_layer = 2
 
 [node name="collider" type="CollisionShape3D" parent="ColorRect/SubViewport/Environment/boundary_1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.39562154, 1.7410364, 1.4167471)
@@ -696,6 +729,7 @@ shape = SubResource("BoxShape3D_3lhed")
 
 [node name="boundary_2" type="StaticBody3D" parent="ColorRect/SubViewport/Environment"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.570605, 0, 14.475942)
+collision_layer = 2
 
 [node name="collider" type="CollisionShape3D" parent="ColorRect/SubViewport/Environment/boundary_2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.39562154, 1.7410364, 1.4167471)
@@ -703,6 +737,7 @@ shape = SubResource("BoxShape3D_3lhed")
 
 [node name="boundary_3" type="StaticBody3D" parent="ColorRect/SubViewport/Environment"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.7557364, 0, 0.9952824)
+collision_layer = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ColorRect/SubViewport/Environment/boundary_3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.46429443, 1.3485107, 1.7960567)
@@ -710,6 +745,7 @@ shape = SubResource("BoxShape3D_e6acm")
 
 [node name="boundary_4" type="StaticBody3D" parent="ColorRect/SubViewport/Environment"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.7557364, 0, 28.327927)
+collision_layer = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ColorRect/SubViewport/Environment/boundary_4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.46429443, 1.3485107, 1.7960567)
@@ -736,5 +772,14 @@ light_color = Color(0.99721164, 0.9260855, 0.7370002, 1)
 light_energy = 1.967
 spot_angle = 33.134182
 
+[node name="enemy_1" parent="ColorRect/SubViewport/Environment" instance=ExtResource("17_ppeh2")]
+process_mode = 4
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0080364, 0.2958113, 2.1886914)
+visible = false
+
+[node name="move_point" type="Node3D" parent="ColorRect/SubViewport/Environment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.1478605, 9.536743e-07, 7.572953)
+
+[connection signal="animation_finished" from="ColorRect/SubViewport/Environment/terminal/anim" to="." method="_on_terminal_animation_finished"]
 [connection signal="body_entered" from="ColorRect/SubViewport/Environment/terminal/area" to="ColorRect/SubViewport/Environment/terminal" method="_on_area_body_entered"]
 [connection signal="body_exited" from="ColorRect/SubViewport/Environment/terminal/area" to="ColorRect/SubViewport/Environment/terminal" method="_on_area_body_exited"]
