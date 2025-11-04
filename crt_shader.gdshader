@@ -51,7 +51,7 @@ uniform float mask_brightness : hint_range(0, 1) = 1.0;
 	Reduce to preserve scanline details in highlights at the cost of
 	overall brightness. This should usually be kept at or near 1
 	*/
-uniform float scanline_brightness : hint_range(0.5, 1.0) = 1.0;
+uniform float scanline_brightness : hint_range(0.0, 1.0) = 1.0;
 
 /**
 	Raising this value can help reduce Moiré patterns.

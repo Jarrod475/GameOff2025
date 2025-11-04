@@ -65,6 +65,9 @@ extends CharacterBody3D
 # Reference to the camera node
 @onready var camera: Camera3D = $cam
 
+#Reference to the animator
+@onready var anim = $player_anim
+
 # Current vertical rotation in radians
 var camera_rotation: float = 0.0
 
@@ -76,6 +79,9 @@ var initial_camera_y: float = 0.0
 
 # Get gravity from project settings
 var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
+
+#tells controllers to stop working
+var dead = false
 
 # ============================================================================
 # INITIALIZATION
@@ -90,7 +96,7 @@ func _ready() -> void:
 		initial_camera_y = camera.position.y
 	else:
 		push_error("Camera3D node not found! Please add a Camera3D as a child of this CharacterBody3D")
-
+	
 # ============================================================================
 # INPUT HANDLING
 # ============================================================================
@@ -155,6 +161,8 @@ func get_input_direction() -> Vector2:
 
 ## Handles horizontal movement with Doom-style instant acceleration
 func handle_movement(input_dir: Vector2, delta: float) -> void:
+	if dead:
+		return
 	# Determine current speed (with sprint if applicable)
 	var current_speed := base_speed
 	if Input.is_action_pressed("sprint"):
@@ -197,7 +205,7 @@ func handle_movement(input_dir: Vector2, delta: float) -> void:
 
 ## Handles mouse look for first-person camera control
 func handle_mouse_look(mouse_delta: Vector2) -> void:
-	if not camera:
+	if not camera or dead:
 		return
 	
 	# Rotate character body horizontally (yaw)
@@ -214,7 +222,7 @@ func handle_mouse_look(mouse_delta: Vector2) -> void:
 
 ## Applies classic FPS head bob effect when moving
 func apply_head_bob(delta: float, input_dir: Vector2) -> void:
-	if not camera:
+	if not camera or dead:
 		return
 	
 	# Only bob when moving on ground
@@ -235,6 +243,10 @@ func apply_head_bob(delta: float, input_dir: Vector2) -> void:
 # ============================================================================
 # UTILITY FUNCTIONS
 # ============================================================================
+
+func die():
+	dead = true
+	anim.play("die")
 
 ## Returns current horizontal speed (useful for UI speedometers)
 func get_horizontal_speed() -> float:

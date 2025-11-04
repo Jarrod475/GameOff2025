@@ -1,0 +1,244 @@
+[gd_scene load_steps=23 format=3 uid="uid://ducml2scdggkp"]
+
+[ext_resource type="Script" uid="uid://d3y7ouwo6arvx" path="res://scripts/cam_move_catcher.gd" id="2_w2dpl"]
+[ext_resource type="Shader" uid="uid://ddwxq4yfo2i7h" path="res://crt_shader.gdshader" id="3_0epwl"]
+[ext_resource type="Script" uid="uid://i3r2tgd6o1jo" path="res://scripts/shader_controller.gd" id="4_opjp2"]
+[ext_resource type="Texture2D" uid="uid://5kelp4ja8u12" path="res://textures/gun_1_test.png" id="5_23w1q"]
+[ext_resource type="LabelSettings" uid="uid://dr0g4i4nhvd2r" path="res://Misc/human_talking.tres" id="6_2wc17"]
+[ext_resource type="Script" uid="uid://d1n5jun2yi08y" path="res://scripts/text_display_system.gd" id="7_uk4ug"]
+[ext_resource type="PackedScene" uid="uid://djrl1asykywps" path="res://scenes/terminal.tscn" id="8_30xgg"]
+[ext_resource type="Script" uid="uid://df72omaqd31gt" path="res://scripts/player.gd" id="17_8gxyh"]
+
+[sub_resource type="Animation" id="Animation_ppeh2"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_5yih7"]
+resource_name = "intro_anim_lights"
+length = 4.0
+step = 1.0
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ppeh2"]
+_data = {
+&"RESET": SubResource("Animation_ppeh2"),
+&"intro_anim_lights": SubResource("Animation_5yih7")
+}
+
+[sub_resource type="Environment" id="Environment_ig7tw"]
+ambient_light_source = 1
+tonemap_mode = 3
+ssao_enabled = true
+ssao_radius = 3.52
+ssao_intensity = 8.4
+ssao_power = 3.32871
+ssao_detail = 0.97
+ssil_radius = 0.01
+glow_enabled = true
+glow_intensity = 8.0
+glow_strength = 2.0
+fog_enabled = true
+fog_light_color = Color(0, 0, 0, 1)
+fog_light_energy = 0.33
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_0xm2m"]
+viewport_path = NodePath("ColorRect/SubViewport")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_h2yge"]
+resource_local_to_scene = true
+shader = ExtResource("3_0epwl")
+shader_parameter/tex = SubResource("ViewportTexture_0xm2m")
+shader_parameter/mask_type = 3
+shader_parameter/curve = 0.0
+shader_parameter/sharpness = 0.6666667
+shader_parameter/color_offset = 0.0
+shader_parameter/mask_brightness = 1.0
+shader_parameter/scanline_brightness = 1.0
+shader_parameter/min_scanline_thickness = 0.75000002375
+shader_parameter/aspect = 0.75
+shader_parameter/wobble_strength = 0.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8qonc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_23w1q")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="QuadMesh" id="QuadMesh_kek77"]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_kek77"]
+data = PackedVector3Array(0.5, -0.5, 0, -0.5, -0.5, 0, 0.5, 0.5, 0, -0.5, -0.5, 0, -0.5, 0.5, 0, 0.5, 0.5, 0)
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_ppeh2"]
+vertices = PackedVector3Array(0.5, -0.5, 0, -0.5, -0.5, 0, 0.5, 0.5, 0, -0.5, 0.5, 0)
+polygons = [PackedInt32Array(0, 1, 2), PackedInt32Array(1, 3, 2)]
+
+[sub_resource type="Animation" id="Animation_30xgg"]
+resource_name = "die"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("cam:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 1.25, 1.4666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0.30887794, 0), Vector3(0, -1.3400513, 0), Vector3(0.064284146, -1.0400751, 0), Vector3(0, -1.3400513, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("cam:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, -0.71157074)]
+}
+
+[sub_resource type="Animation" id="Animation_wt0sh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("cam:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.30887794, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("cam:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_psjlp"]
+_data = {
+&"RESET": SubResource("Animation_wt0sh"),
+&"die": SubResource("Animation_30xgg")
+}
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_272bh"]
+radius = 0.34033203
+height = 2.243103
+
+[node name="layout" type="CanvasLayer"]
+
+[node name="intro_anim_master" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_ppeh2")
+}
+
+[node name="input_catcher" type="Node3D" parent="."]
+script = ExtResource("2_w2dpl")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.36851397, 0.92962223, 0, -0.92962223, -0.36851397, 0, 6.096995, 0)
+light_energy = 0.25
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ig7tw")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_h2yge")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("4_opjp2")
+
+[node name="SubViewport" type="SubViewport" parent="ColorRect"]
+handle_input_locally = false
+canvas_item_default_texture_filter = 0
+physics_object_picking = true
+gui_disable_input = true
+
+[node name="HUD" type="Control" parent="ColorRect/SubViewport"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="weapon_sprite" type="AnimatedSprite2D" parent="ColorRect/SubViewport/HUD"]
+visible = false
+position = Vector2(220, 320)
+scale = Vector2(0.75, 0.75)
+sprite_frames = SubResource("SpriteFrames_8qonc")
+
+[node name="text_display_bottom" type="Label" parent="ColorRect/SubViewport/HUD"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -81.0
+offset_top = -50.975006
+offset_right = 81.0
+offset_bottom = -26.975006
+grow_horizontal = 2
+grow_vertical = 0
+label_settings = ExtResource("6_2wc17")
+horizontal_alignment = 1
+script = ExtResource("7_uk4ug")
+
+[node name="Environment" type="Node3D" parent="ColorRect/SubViewport"]
+
+[node name="Floor" type="MeshInstance3D" parent="ColorRect/SubViewport/Environment"]
+transform = Transform3D(28.713512, 0, 0, 0, -1.7806151e-06, 5, 0, -40.735725, -2.1855695e-07, 3.2647302, 0, 15.770051)
+mesh = SubResource("QuadMesh_kek77")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="ColorRect/SubViewport/Environment/Floor"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ColorRect/SubViewport/Environment/Floor/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_kek77")
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="ColorRect/SubViewport/Environment/Floor"]
+navigation_mesh = SubResource("NavigationMesh_ppeh2")
+
+[node name="Player" type="CharacterBody3D" parent="ColorRect/SubViewport/Environment" groups=["player"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.058989048, 1.537142, 28.242933)
+collision_mask = 3
+script = ExtResource("17_8gxyh")
+base_speed = 8.0
+bob_amplitude = 0.13
+
+[node name="player_anim" type="AnimationPlayer" parent="ColorRect/SubViewport/Environment/Player"]
+libraries = {
+&"": SubResource("AnimationLibrary_psjlp")
+}
+speed_scale = 3.0
+
+[node name="cam" type="Camera3D" parent="ColorRect/SubViewport/Environment/Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.30887794, 0)
+current = true
+
+[node name="collider" type="CollisionShape3D" parent="ColorRect/SubViewport/Environment/Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.39157104, 0)
+shape = SubResource("CapsuleShape3D_272bh")
+
+[node name="terminal" parent="ColorRect/SubViewport/Environment" instance=ExtResource("8_30xgg")]
+transform = Transform3D(0.9142115, 0, 0.40523732, 0, 1, 0, -0.40523732, 0, 0.9142115, -1.0413053, 0.5608678, 24.657583)

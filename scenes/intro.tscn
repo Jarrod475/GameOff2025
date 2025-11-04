@@ -1,22 +1,23 @@
-[gd_scene load_steps=67 format=4 uid="uid://b8ukmu7f0x14n"]
+[gd_scene load_steps=71 format=4 uid="uid://b8ukmu7f0x14n"]
 
-[ext_resource type="Script" uid="uid://d3y7ouwo6arvx" path="res://scripts/cam_move_catcher.gd" id="1_o2wmi"]
-[ext_resource type="Shader" uid="uid://ddwxq4yfo2i7h" path="res://crt_shader.gdshader" id="2_7or65"]
-[ext_resource type="LabelSettings" uid="uid://dr0g4i4nhvd2r" path="res://Misc/human_talking.tres" id="3_3lhed"]
-[ext_resource type="FontFile" uid="uid://dhvx4kk6q8b61" path="res://Misc/Tektur-VariableFont_wdth,wght.ttf" id="3_pamum"]
-[ext_resource type="Script" uid="uid://d1n5jun2yi08y" path="res://scripts/text_display_system.gd" id="4_3lhed"]
-[ext_resource type="Texture2D" uid="uid://5kelp4ja8u12" path="res://textures/gun_1_test.png" id="4_5yih7"]
-[ext_resource type="Script" uid="uid://cmcsgpkuyjryh" path="res://scripts/terminal.gd" id="5_3lhed"]
-[ext_resource type="Script" uid="uid://df72omaqd31gt" path="res://scripts/player.gd" id="5_e6acm"]
-[ext_resource type="Script" uid="uid://dn4dfnipxxggb" path="res://scripts/intro_manager.gd" id="5_gh3nu"]
-[ext_resource type="Texture2D" uid="uid://xm8swrif4hg2" path="res://textures/metal_1.png" id="6_o2wmi"]
-[ext_resource type="Material" uid="uid://b77oo3cvecp75" path="res://materials/deny_red.tres" id="7_7or65"]
-[ext_resource type="Texture2D" uid="uid://ddc3tsk5hmlon" path="res://sprites/robot_die_sheet-sheet.png" id="10_rhxg2"]
-[ext_resource type="Texture2D" uid="uid://ub2qdn365mii" path="res://sprites/robot_walk_sheet.png" id="11_gh3nu"]
-[ext_resource type="Texture2D" uid="uid://bjpoy6erp03hb" path="res://sprites/robot_walk_backt.png" id="12_5yih7"]
-[ext_resource type="Texture2D" uid="uid://ds1abapqe8xab" path="res://sprites/robot_walk_right.png" id="13_ppeh2"]
-[ext_resource type="Texture2D" uid="uid://dacgxdra3o1cl" path="res://sprites/robot_walk_left.png" id="14_8qonc"]
-[ext_resource type="PackedScene" uid="uid://4ln7quvtnp76" path="res://scenes/enemy_1.tscn" id="17_ppeh2"]
+[ext_resource type="Script" uid="uid://dn4dfnipxxggb" path="res://scripts/intro_manager.gd" id="1_ge50m"]
+[ext_resource type="Script" uid="uid://d3y7ouwo6arvx" path="res://scripts/cam_move_catcher.gd" id="2_17bgi"]
+[ext_resource type="Shader" uid="uid://ddwxq4yfo2i7h" path="res://crt_shader.gdshader" id="3_dryi7"]
+[ext_resource type="Script" uid="uid://i3r2tgd6o1jo" path="res://scripts/shader_controller.gd" id="4_5pmge"]
+[ext_resource type="Texture2D" uid="uid://5kelp4ja8u12" path="res://textures/gun_1_test.png" id="5_hai50"]
+[ext_resource type="LabelSettings" uid="uid://dr0g4i4nhvd2r" path="res://Misc/human_talking.tres" id="6_kh17o"]
+[ext_resource type="Script" uid="uid://d1n5jun2yi08y" path="res://scripts/text_display_system.gd" id="7_urird"]
+[ext_resource type="Script" uid="uid://cmcsgpkuyjryh" path="res://scripts/terminal.gd" id="8_t5vr6"]
+[ext_resource type="Texture2D" uid="uid://ddc3tsk5hmlon" path="res://sprites/robot_die_sheet-sheet.png" id="9_4vp3x"]
+[ext_resource type="Texture2D" uid="uid://ub2qdn365mii" path="res://sprites/robot_walk_sheet.png" id="10_sg54v"]
+[ext_resource type="Texture2D" uid="uid://bjpoy6erp03hb" path="res://sprites/robot_walk_backt.png" id="11_yj5im"]
+[ext_resource type="Texture2D" uid="uid://ds1abapqe8xab" path="res://sprites/robot_walk_right.png" id="12_h7rjp"]
+[ext_resource type="Texture2D" uid="uid://dacgxdra3o1cl" path="res://sprites/robot_walk_left.png" id="13_6ac85"]
+[ext_resource type="Texture2D" uid="uid://xm8swrif4hg2" path="res://textures/metal_1.png" id="14_lm4bj"]
+[ext_resource type="Material" uid="uid://b77oo3cvecp75" path="res://materials/deny_red.tres" id="15_x2gsc"]
+[ext_resource type="FontFile" uid="uid://dhvx4kk6q8b61" path="res://Misc/Tektur-VariableFont_wdth,wght.ttf" id="16_366e5"]
+[ext_resource type="Script" uid="uid://df72omaqd31gt" path="res://scripts/player.gd" id="17_38pnl"]
+[ext_resource type="PackedScene" uid="uid://4ln7quvtnp76" path="res://scenes/enemy_1.tscn" id="18_y6kq6"]
 
 [sub_resource type="Animation" id="Animation_ppeh2"]
 length = 0.001
@@ -149,7 +150,7 @@ viewport_path = NodePath("ColorRect/SubViewport")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_h2yge"]
 resource_local_to_scene = true
-shader = ExtResource("2_7or65")
+shader = ExtResource("3_dryi7")
 shader_parameter/tex = SubResource("ViewportTexture_0xm2m")
 shader_parameter/mask_type = 3
 shader_parameter/curve = 0.0
@@ -165,7 +166,7 @@ shader_parameter/wobble_strength = 0.0
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("4_5yih7")
+"texture": ExtResource("5_hai50")
 }],
 "loop": true,
 "name": &"default",
@@ -263,91 +264,91 @@ _data = {
 }
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_272bh"]
-atlas = ExtResource("10_rhxg2")
+atlas = ExtResource("9_4vp3x")
 region = Rect2(0, 0, 100, 250)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5vw27"]
-atlas = ExtResource("10_rhxg2")
+atlas = ExtResource("9_4vp3x")
 region = Rect2(100, 0, 100, 250)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kek77"]
-atlas = ExtResource("10_rhxg2")
+atlas = ExtResource("9_4vp3x")
 region = Rect2(200, 0, 100, 250)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4c57u"]
-atlas = ExtResource("10_rhxg2")
+atlas = ExtResource("9_4vp3x")
 region = Rect2(300, 0, 100, 250)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_efxa6"]
-atlas = ExtResource("10_rhxg2")
+atlas = ExtResource("9_4vp3x")
 region = Rect2(400, 0, 100, 250)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7mycd"]
-atlas = ExtResource("11_gh3nu")
+atlas = ExtResource("10_sg54v")
 region = Rect2(400, 0, 100, 250)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dg77c"]
-atlas = ExtResource("12_5yih7")
+atlas = ExtResource("11_yj5im")
 region = Rect2(0, 0, 100, 250)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ycdy4"]
-atlas = ExtResource("12_5yih7")
+atlas = ExtResource("11_yj5im")
 region = Rect2(100, 0, 100, 250)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_w48qg"]
-atlas = ExtResource("12_5yih7")
+atlas = ExtResource("11_yj5im")
 region = Rect2(200, 0, 100, 250)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vivmo"]
-atlas = ExtResource("12_5yih7")
+atlas = ExtResource("11_yj5im")
 region = Rect2(300, 0, 100, 250)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0xm2m"]
-atlas = ExtResource("11_gh3nu")
+atlas = ExtResource("10_sg54v")
 region = Rect2(0, 0, 100, 250)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_h2yge"]
-atlas = ExtResource("11_gh3nu")
+atlas = ExtResource("10_sg54v")
 region = Rect2(100, 0, 100, 250)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1bvp3"]
-atlas = ExtResource("11_gh3nu")
+atlas = ExtResource("10_sg54v")
 region = Rect2(200, 0, 100, 250)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lquwl"]
-atlas = ExtResource("11_gh3nu")
+atlas = ExtResource("10_sg54v")
 region = Rect2(300, 0, 100, 250)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_82xsv"]
-atlas = ExtResource("13_ppeh2")
+atlas = ExtResource("12_h7rjp")
 region = Rect2(0, 0, 100, 250)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_getpj"]
-atlas = ExtResource("13_ppeh2")
+atlas = ExtResource("12_h7rjp")
 region = Rect2(100, 0, 100, 250)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ryguw"]
-atlas = ExtResource("13_ppeh2")
+atlas = ExtResource("12_h7rjp")
 region = Rect2(200, 0, 100, 250)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_d13ii"]
-atlas = ExtResource("13_ppeh2")
+atlas = ExtResource("12_h7rjp")
 region = Rect2(300, 0, 100, 250)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2cqfq"]
-atlas = ExtResource("14_8qonc")
+atlas = ExtResource("13_6ac85")
 region = Rect2(100, 0, 100, 250)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yaehf"]
-atlas = ExtResource("14_8qonc")
+atlas = ExtResource("13_6ac85")
 region = Rect2(200, 0, 100, 250)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_074og"]
-atlas = ExtResource("14_8qonc")
+atlas = ExtResource("13_6ac85")
 region = Rect2(300, 0, 100, 250)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cegan"]
-atlas = ExtResource("14_8qonc")
+atlas = ExtResource("13_6ac85")
 region = Rect2(0, 0, 100, 250)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_272bh"]
@@ -463,7 +464,7 @@ height = 1.4332275
 radius = 1.409668
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7or65"]
-albedo_texture = ExtResource("6_o2wmi")
+albedo_texture = ExtResource("14_lm4bj")
 metallic = 0.3
 metallic_specular = 0.47
 roughness = 0.49
@@ -542,6 +543,67 @@ data = PackedVector3Array(0.5, -0.5, 0, -0.5, -0.5, 0, 0.5, 0.5, 0, -0.5, -0.5, 
 vertices = PackedVector3Array(0.5, -0.5, 0, -0.5, -0.5, 0, 0.5, 0.5, 0, -0.5, 0.5, 0)
 polygons = [PackedInt32Array(0, 1, 2), PackedInt32Array(1, 3, 2)]
 
+[sub_resource type="Animation" id="Animation_30xgg"]
+resource_name = "die"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("cam:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 1.25, 1.4666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0.30887794, 0), Vector3(0, -1.3400513, 0), Vector3(0.064284146, -1.0400751, 0), Vector3(0, -1.3400513, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("cam:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, -0.71157074)]
+}
+
+[sub_resource type="Animation" id="Animation_wt0sh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("cam:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.30887794, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("cam:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_psjlp"]
+_data = {
+&"RESET": SubResource("Animation_wt0sh"),
+&"die": SubResource("Animation_30xgg")
+}
+
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_272bh"]
 radius = 0.34033203
 height = 2.243103
@@ -553,7 +615,7 @@ size = Vector3(0.18859863, 1.394043, 28.17871)
 size = Vector3(5.244995, 3.6970215, 0.23950195)
 
 [node name="layout" type="CanvasLayer"]
-script = ExtResource("5_gh3nu")
+script = ExtResource("1_ge50m")
 
 [node name="intro_anim_master" type="AnimationPlayer" parent="."]
 libraries = {
@@ -561,7 +623,7 @@ libraries = {
 }
 
 [node name="input_catcher" type="Node3D" parent="."]
-script = ExtResource("1_o2wmi")
+script = ExtResource("2_17bgi")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_ig7tw")
@@ -574,6 +636,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+script = ExtResource("4_5pmge")
 
 [node name="SubViewport" type="SubViewport" parent="ColorRect"]
 handle_input_locally = false
@@ -590,6 +653,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="weapon_sprite" type="AnimatedSprite2D" parent="ColorRect/SubViewport/HUD"]
+visible = false
 position = Vector2(220, 320)
 scale = Vector2(0.75, 0.75)
 sprite_frames = SubResource("SpriteFrames_8qonc")
@@ -608,16 +672,16 @@ offset_bottom = -26.975006
 grow_horizontal = 2
 grow_vertical = 0
 text = "Samuel"
-label_settings = ExtResource("3_3lhed")
+label_settings = ExtResource("6_kh17o")
 horizontal_alignment = 1
-script = ExtResource("4_3lhed")
+script = ExtResource("7_urird")
 
 [node name="Environment" type="Node3D" parent="ColorRect/SubViewport"]
 
 [node name="terminal" type="Node3D" parent="ColorRect/SubViewport/Environment"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.2842042, 0.49999213, 2.398305)
 visible = false
-script = ExtResource("5_3lhed")
+script = ExtResource("8_t5vr6")
 
 [node name="anim" type="AnimationPlayer" parent="ColorRect/SubViewport/Environment/terminal"]
 libraries = {
@@ -666,7 +730,7 @@ skeleton = NodePath("")
 
 [node name="screen" type="MeshInstance3D" parent="ColorRect/SubViewport/Environment/terminal"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5147966, 0)
-material_override = ExtResource("7_7or65")
+material_override = ExtResource("15_x2gsc")
 mesh = SubResource("ArrayMesh_r8pmq")
 skeleton = NodePath("")
 
@@ -675,7 +739,7 @@ transform = Transform3D(1, 0, 0, 0, 0.8712224, 0.49088857, 0, -0.49088857, 0.871
 texture_filter = 1
 text = "Press E
 "
-font = ExtResource("3_pamum")
+font = ExtResource("16_366e5")
 font_size = 31
 outline_size = 9
 autowrap_mode = 1
@@ -684,7 +748,7 @@ width = 171.95
 [node name="label_top" type="Label3D" parent="ColorRect/SubViewport/Environment/terminal/screen"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.42741704, 3.0096717, -0.2662201)
 texture_filter = 1
-font = ExtResource("3_pamum")
+font = ExtResource("16_366e5")
 font_size = 9
 outline_size = 7
 horizontal_alignment = 0
@@ -707,9 +771,15 @@ navigation_mesh = SubResource("NavigationMesh_ppeh2")
 [node name="Player" type="CharacterBody3D" parent="ColorRect/SubViewport/Environment" groups=["player"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.0740414, 1.537142, 27.799767)
 collision_mask = 3
-script = ExtResource("5_e6acm")
+script = ExtResource("17_38pnl")
 base_speed = 8.0
 bob_amplitude = 0.13
+
+[node name="player_anim" type="AnimationPlayer" parent="ColorRect/SubViewport/Environment/Player"]
+libraries = {
+&"": SubResource("AnimationLibrary_psjlp")
+}
+speed_scale = 3.0
 
 [node name="cam" type="Camera3D" parent="ColorRect/SubViewport/Environment/Player"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.30887794, 0)
@@ -772,7 +842,7 @@ light_color = Color(0.99721164, 0.9260855, 0.7370002, 1)
 light_energy = 1.967
 spot_angle = 33.134182
 
-[node name="enemy_1" parent="ColorRect/SubViewport/Environment" instance=ExtResource("17_ppeh2")]
+[node name="enemy_1" parent="ColorRect/SubViewport/Environment" instance=ExtResource("18_y6kq6")]
 process_mode = 4
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0080364, 0.2958113, 2.1886914)
 visible = false
