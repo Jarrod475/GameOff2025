@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bp54o0l7x8vn8"
-path="res://.godot/imported/tets_env_2.glb-fabc4032fad945651f3ad19b3a452b53.scn"
+uid="uid://ddtsrgumlx2su"
+path="res://.godot/imported/wave_room_1.glb-7956781ade4d17ab594fe5c71cedc547.scn"
 
 [deps]
 
-source_file="res://models/tets_env_2.glb"
-dest_files=["res://.godot/imported/tets_env_2.glb-fabc4032fad945651f3ad19b3a452b53.scn"]
+source_file="res://models/wave_room_1.glb"
+dest_files=["res://.godot/imported/wave_room_1.glb-7956781ade4d17ab594fe5c71cedc547.scn"]
 
 [params]
 

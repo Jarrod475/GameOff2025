@@ -15,6 +15,8 @@ extends Node3D
 var is_player_inside = false
 var activated = false
 
+signal terminal_activated()
+
 func _ready() -> void:
 	$"../../../../input_catcher".interact.connect(player_interacted)
 
@@ -38,4 +40,5 @@ func player_interacted():
 	screen.material_override = material_orange
 	anim.play("intro_boot_up")
 	label_bottom.text = "Installing..."
+	terminal_activated.emit()
 	activated = true

@@ -1,6 +1,7 @@
 extends Node3D
 
 signal interact
+signal pew
 
 func _ready() -> void:
 	# Capture mouse cursor for FPS controls
@@ -12,4 +13,7 @@ func _input(event: InputEvent) -> void:
 	
 	if event.is_action_pressed("interact"):
 		interact.emit()
+	if event.is_action_pressed("shoot"):
+		pew.emit()
+	
 	

@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://clqeh80lf00qv"]
+
+[ext_resource type="Texture2D" uid="uid://056norf2aamc" path="res://textures/roof_1.png" id="1_tlofh"]
+
+[resource]
+albedo_texture = ExtResource("1_tlofh")
+metallic = 0.2
+roughness = 0.65
+texture_filter = 0

@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://cv48n2pke57dl"]
+
+[ext_resource type="Texture2D" uid="uid://c5wfdnrj3l3rm" path="res://textures/dark_1.png" id="1_upins"]
+
+[resource]
+albedo_texture = ExtResource("1_upins")
+metallic = 1.0
+texture_filter = 0
