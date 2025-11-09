@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ub2qdn365mii"
-path.s3tc="res://.godot/imported/robot_walk_sheet.png-e577999c46ef9510af9da77c1c8429e6.s3tc.ctex"
+uid="uid://chfwxijijg28a"
+path.s3tc="res://.godot/imported/robot_2_right.png-a1af8f65d23cfd1c022f5ff566745440.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://sprites/robot_walk_sheet.png"
-dest_files=["res://.godot/imported/robot_walk_sheet.png-e577999c46ef9510af9da77c1c8429e6.s3tc.ctex"]
+source_file="res://sprites/enemy_2/robot_2_right.png"
+dest_files=["res://.godot/imported/robot_2_right.png-a1af8f65d23cfd1c022f5ff566745440.s3tc.ctex"]
 
 [params]
 

@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ddc3tsk5hmlon"
-path.s3tc="res://.godot/imported/robot_die_sheet-sheet.png-24eb123cc4fe6623739bef2783d0c64c.s3tc.ctex"
+uid="uid://bjpoy6erp03hb"
+path.s3tc="res://.godot/imported/robot_walk_backt.png-f1af57b1455c1ba9ecf6b63d3b2064e6.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://sprites/robot_die_sheet-sheet.png"
-dest_files=["res://.godot/imported/robot_die_sheet-sheet.png-24eb123cc4fe6623739bef2783d0c64c.s3tc.ctex"]
+source_file="res://sprites/enemy_1/robot_walk_backt.png"
+dest_files=["res://.godot/imported/robot_walk_backt.png-f1af57b1455c1ba9ecf6b63d3b2064e6.s3tc.ctex"]
 
 [params]
 

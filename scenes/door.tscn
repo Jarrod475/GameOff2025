@@ -1,8 +1,10 @@
-[gd_scene load_steps=23 format=4 uid="uid://ditp4nvpwwqaa"]
+[gd_scene load_steps=25 format=4 uid="uid://ditp4nvpwwqaa"]
 
 [ext_resource type="Script" uid="uid://dq1opgg24sdft" path="res://scripts/door_controller.gd" id="1_la1wf"]
 [ext_resource type="Material" uid="uid://cf7xfgktemuff" path="res://materials/pipe_1.tres" id="2_18pbm"]
+[ext_resource type="Material" uid="uid://b51a6fh4c7ey2" path="res://materials/accept_green.tres" id="2_q5w8r"]
 [ext_resource type="Material" uid="uid://cv48n2pke57dl" path="res://materials/pipe_2.tres" id="3_q5w8r"]
+[ext_resource type="Material" uid="uid://b77oo3cvecp75" path="res://materials/deny_red.tres" id="4_ju5n0"]
 [ext_resource type="Material" uid="uid://bihiqxuq421bn" path="res://materials/query_orange.tres" id="4_t58dd"]
 
 [sub_resource type="Animation" id="Animation_w2dpl"]
@@ -238,6 +240,9 @@ size = Vector3(4.859131, 1.6714478, 5.472183)
 [node name="door" type="Node3D"]
 transform = Transform3D(-3.934025e-08, 0, 1, 0, 1, 0, -0.9, 0, -4.371139e-08, 0, 0, 0)
 script = ExtResource("1_la1wf")
+light_green = ExtResource("2_q5w8r")
+light_yellow = ExtResource("4_t58dd")
+light_red = ExtResource("4_ju5n0")
 
 [node name="anim" type="AnimationPlayer" parent="."]
 libraries = {

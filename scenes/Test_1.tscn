@@ -461,11 +461,25 @@ script = ExtResource("7_uk4ug")
 
 [node name="Environment" type="Node3D" parent="ColorRect/SubViewport"]
 
+[node name="enemy_spawns" type="Node3D" parent="ColorRect/SubViewport/Environment"]
+
+[node name="spawn_point_1" type="Node3D" parent="ColorRect/SubViewport/Environment/enemy_spawns"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.9358997, 16.410751, 6.425586)
+
+[node name="spawn_point_2" type="Node3D" parent="ColorRect/SubViewport/Environment/enemy_spawns"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.8766685, 16.410751, -6.7216597)
+
+[node name="spawn_point_3" type="Node3D" parent="ColorRect/SubViewport/Environment/enemy_spawns"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.9479103, 16.410751, -6.7216597)
+
+[node name="spawn_point_4" type="Node3D" parent="ColorRect/SubViewport/Environment/enemy_spawns"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.9479103, 16.15268, 6.5873294)
+
 [node name="door" parent="ColorRect/SubViewport/Environment" instance=ExtResource("9_rrg2u")]
 transform = Transform3D(-3.934025e-08, 0, 1, 0, 1, 0, -0.9, 0, -4.371139e-08, 15.487787, 0.9733968, -0.07241058)
 
 [node name="Player" type="CharacterBody3D" parent="ColorRect/SubViewport/Environment" groups=["player"]]
-transform = Transform3D(-0.0011693673, 0, 0.99999934, 0, 1, 0, -0.99999934, 0, -0.0011693673, 23.110996, 3.281724, -0.23213863)
+transform = Transform3D(-0.0011693673, 0, 0.99999934, 0, 1, 0, -0.99999934, 0, -0.0011693673, -0.6324043, 8.207071, 10.773557)
 collision_mask = 3
 script = ExtResource("17_8gxyh")
 base_speed = 8.0

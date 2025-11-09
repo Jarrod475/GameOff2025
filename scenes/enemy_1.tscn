@@ -1,11 +1,11 @@
 [gd_scene load_steps=33 format=3 uid="uid://4ln7quvtnp76"]
 
 [ext_resource type="Script" uid="uid://c1wqh633c6j6x" path="res://scripts/enemy_robot_controller.gd" id="1_l21ug"]
-[ext_resource type="Texture2D" uid="uid://ddc3tsk5hmlon" path="res://sprites/robot_die_sheet-sheet.png" id="2_6nrqq"]
-[ext_resource type="Texture2D" uid="uid://ub2qdn365mii" path="res://sprites/robot_walk_sheet.png" id="3_oweuj"]
-[ext_resource type="Texture2D" uid="uid://bjpoy6erp03hb" path="res://sprites/robot_walk_backt.png" id="4_hcr21"]
-[ext_resource type="Texture2D" uid="uid://ds1abapqe8xab" path="res://sprites/robot_walk_right.png" id="5_x5oq2"]
-[ext_resource type="Texture2D" uid="uid://dacgxdra3o1cl" path="res://sprites/robot_walk_left.png" id="6_m468s"]
+[ext_resource type="Texture2D" uid="uid://ddc3tsk5hmlon" path="res://sprites/enemy_1/robot_die_sheet-sheet.png" id="2_6nrqq"]
+[ext_resource type="Texture2D" uid="uid://ub2qdn365mii" path="res://sprites/enemy_1/robot_walk_sheet.png" id="3_oweuj"]
+[ext_resource type="Texture2D" uid="uid://bjpoy6erp03hb" path="res://sprites/enemy_1/robot_walk_backt.png" id="4_hcr21"]
+[ext_resource type="Texture2D" uid="uid://ds1abapqe8xab" path="res://sprites/enemy_1/robot_walk_right.png" id="5_x5oq2"]
+[ext_resource type="Texture2D" uid="uid://dacgxdra3o1cl" path="res://sprites/enemy_1/robot_walk_left.png" id="6_m468s"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_272bh"]
 atlas = ExtResource("2_6nrqq")
