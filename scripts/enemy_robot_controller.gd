@@ -142,6 +142,20 @@ const ANIM_WALK_BACKWARD = "walk_backward"
 const ANIM_WALK_LEFT = "walk_left"
 const ANIM_WALK_RIGHT = "walk_right"
 
+# health variables
+var health : float = 50:
+	get(): return health
+	set(val) : 
+		if health <= 0:
+			return
+		health = val
+		if health <= 0:
+			animated_sprite.play("die")
+			set_physics_process(false)
+			await get_tree().create_timer(3).timeout
+			queue_free()
+			
+
 # ============================================================================
 # INITIALIZATION
 # ============================================================================

@@ -6,3 +6,4 @@ metallic = 1.0
 metallic_specular = 1.0
 emission_enabled = true
 emission = Color(0.5569111, 0, 0.080655985, 1)
+emission_energy_multiplier = 2.05

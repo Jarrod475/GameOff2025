@@ -206,7 +206,7 @@ metallic_specular = 0.0
 [sub_resource type="BoxShape3D" id="BoxShape3D_kek77"]
 size = Vector3(0.6069946, 2.044464, 0.7202759)
 
-[node name="enemy_1" type="CharacterBody3D"]
+[node name="enemy_1" type="CharacterBody3D" groups=["enemy"]]
 floor_stop_on_slope = false
 script = ExtResource("1_l21ug")
 player_path = NodePath("../Player")
@@ -219,7 +219,7 @@ camera_path = NodePath("../Player/cam")
 direction_buffer_angle = 60.0
 animation_switch_hysteresis = 0.0
 
-[node name="GFX" type="AnimatedSprite3D" parent="."]
+[node name="GFX" type="AnimatedSprite3D" parent="." groups=["enemy"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00288135, 0.976039, 0.3452947)
 billboard = 2
 shaded = true

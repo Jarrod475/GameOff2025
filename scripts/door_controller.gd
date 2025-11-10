@@ -1,6 +1,6 @@
 extends Node3D
 
-var locked = false
+@export var locked = false
 @onready var light = $light_parent/light
 @onready var anim = $anim
 var is_open = false
@@ -8,6 +8,14 @@ var is_open = false
 @export var light_green : Material
 @export var light_yellow : Material
 @export var light_red : Material
+
+func _ready() -> void:
+	if locked:
+		light.material_override = light_red
+	else:
+		light.material_override = light_green
+
+		
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body.is_in_group("player") and !locked and !anim.is_playing() and !is_open:
@@ -41,3 +49,8 @@ func lock():
 func unlock():
 	locked = false
 	light.material_override = light_green
+
+
+
+	
+	

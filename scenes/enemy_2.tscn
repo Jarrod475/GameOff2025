@@ -196,7 +196,9 @@ metallic_specular = 0.0
 [sub_resource type="BoxShape3D" id="BoxShape3D_kek77"]
 size = Vector3(0.9267311, 0.8218422, 0.7202759)
 
-[node name="enemy_2" type="CharacterBody3D"]
+[node name="enemy_2" type="CharacterBody3D" groups=["enemy"]]
+motion_mode = 1
+slide_on_ceiling = false
 floor_stop_on_slope = false
 script = ExtResource("1_fdqbe")
 player_path = NodePath("../Player")

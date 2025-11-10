@@ -1,0 +1,99 @@
+[gd_scene load_steps=7 format=3 uid="uid://4usvgebcv5fj"]
+
+[ext_resource type="Script" uid="uid://df72omaqd31gt" path="res://scripts/player.gd" id="1_3vyb7"]
+[ext_resource type="Script" uid="uid://dp0ywd8u3ydw2" path="res://scripts/raycast_manager.gd" id="2_g2els"]
+
+[sub_resource type="Animation" id="Animation_wt0sh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("cam:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.30887794, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("cam:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_30xgg"]
+resource_name = "die"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("cam:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 1.25, 1.4666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0.30887794, 0), Vector3(0, -1.3400513, 0), Vector3(0.064284146, -1.0400751, 0), Vector3(0, -1.3400513, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("cam:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, -0.71157074)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_psjlp"]
+_data = {
+&"RESET": SubResource("Animation_wt0sh"),
+&"die": SubResource("Animation_30xgg")
+}
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_272bh"]
+radius = 0.34033203
+height = 2.243103
+
+[node name="Player" type="CharacterBody3D" groups=["player"]]
+transform = Transform3D(-0.0011693673, 0, 0.99999934, 0, 1, 0, -0.99999934, 0, -0.0011693673, 0, 0, 0)
+collision_mask = 3
+script = ExtResource("1_3vyb7")
+base_speed = 8.0
+bob_amplitude = 0.13
+
+[node name="gun_light" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.48903847, -1.2385464)
+visible = false
+light_color = Color(0.5921569, 1, 1, 1)
+light_energy = 0.5
+light_specular = 1.0
+omni_range = 3.0
+
+[node name="player_anim" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_psjlp")
+}
+speed_scale = 3.0
+
+[node name="cam" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.30887794, 0)
+current = true
+script = ExtResource("2_g2els")
+
+[node name="collider" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.39157104, 0)
+shape = SubResource("CapsuleShape3D_272bh")

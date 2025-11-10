@@ -9,9 +9,8 @@ func _ready() -> void:
 	
 
 func shoot():
-	if !is_playing():
-		play("handgun_shoot")
-		gun_light.visible = true
-		await get_tree().create_timer(0.1).timeout
-		gun_light.visible = false
+	play("handgun_shoot")
+	gun_light.visible = true
+	await get_tree().create_timer(0.1).timeout
+	gun_light.visible = false
 	

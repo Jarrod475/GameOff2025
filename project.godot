@@ -15,6 +15,10 @@ run/main_scene="uid://ducml2scdggkp"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+GunData="*res://scripts/gun_data_singleton.gd"
+
 [display]
 
 window/size/viewport_width=1920
@@ -31,6 +35,10 @@ folder_colors={
 "res://sprites/": "orange",
 "res://textures/": "blue"
 }
+
+[global_group]
+
+enemy="for le enemy"
 
 [input]
 
