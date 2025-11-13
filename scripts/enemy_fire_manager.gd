@@ -5,6 +5,8 @@ extends Node3D
 var time_to_fire = 0
 @export var fire_min = 2.0
 @export var fire_max = 6.0
+
+signal shooting()
 func _ready() -> void:
 	time_to_fire = get_random_time()
 	
@@ -17,6 +19,7 @@ func _process(delta: float) -> void:
 	
 	
 func fire():
+	shooting.emit()
 	var new_bullet = bullet.instantiate()
 	new_bullet.global_position = global_position
 	bullet_parent_node.add_child(new_bullet)

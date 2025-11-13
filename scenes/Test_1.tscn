@@ -365,6 +365,7 @@ script = ExtResource("4_opjp2")
 [node name="SubViewport" type="SubViewport" parent="ColorRect"]
 handle_input_locally = false
 canvas_item_default_texture_filter = 0
+audio_listener_enable_3d = true
 physics_object_picking = true
 gui_disable_input = true
 

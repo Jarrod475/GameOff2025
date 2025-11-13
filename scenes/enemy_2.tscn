@@ -1,13 +1,16 @@
-[gd_scene load_steps=38 format=3 uid="uid://b25becv6yfneo"]
+[gd_scene load_steps=41 format=3 uid="uid://b25becv6yfneo"]
 
 [ext_resource type="Script" uid="uid://c1wqh633c6j6x" path="res://scripts/enemy_robot_controller.gd" id="1_fdqbe"]
 [ext_resource type="Script" uid="uid://c6m8x7j174pyx" path="res://scripts/damage_particle_manager.gd" id="2_a2yeo"]
 [ext_resource type="Texture2D" uid="uid://dy1ptyxdh778l" path="res://sprites/enemy_2/robot_2_die.png" id="2_fdqbe"]
 [ext_resource type="Script" uid="uid://hsglskkqujld" path="res://scripts/enemy_fire_manager.gd" id="2_lxmbh"]
 [ext_resource type="Texture2D" uid="uid://1lumt0sk0enr" path="res://sprites/enemy_2/robot_2_forward-sheet.png" id="3_a2yeo"]
+[ext_resource type="Script" uid="uid://ckv551rnv03e8" path="res://scripts/enemy_sounds_manager.gd" id="3_lxmbh"]
+[ext_resource type="AudioStream" uid="uid://qken6gnxhedi" path="res://sound clips/gunshot_2.mp3" id="4_7du6s"]
 [ext_resource type="Texture2D" uid="uid://im8ahcnspufv" path="res://sprites/enemy_2/robot_2_back.png" id="4_hvrhm"]
 [ext_resource type="Texture2D" uid="uid://debe0gd4i4k7b" path="res://sprites/enemy_2/robot_2_left.png" id="5_fdqbe"]
 [ext_resource type="Texture2D" uid="uid://chfwxijijg28a" path="res://sprites/enemy_2/robot_2_right.png" id="6_fdqbe"]
+[ext_resource type="AudioStream" uid="uid://dnid4hmtgexcm" path="res://sound clips/enemy_motion_1.mp3" id="11_6dp05"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fdqbe"]
 transparency = 1
@@ -234,6 +237,13 @@ animation_switch_hysteresis = 0.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1010252, 0.39512873)
 script = ExtResource("2_lxmbh")
 
+[node name="audio" type="AudioStreamPlayer3D" parent="fire_point"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.1010252, -0.39512873)
+stream = ExtResource("4_7du6s")
+max_distance = 30.0
+script = ExtResource("3_lxmbh")
+gunshot = ExtResource("4_7du6s")
+
 [node name="damage_particles" type="CPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1158631, 0)
 emitting = false
@@ -280,3 +290,8 @@ mesh = SubResource("CylinderMesh_h2yge")
 [node name="Collider" type="CollisionShape3D" parent="."]
 transform = Transform3D(0.5822568, 0, 0, 0, 0.5822568, 0, 0, 0, 0.5822568, 0.0114014745, 1.1041139, 0.32357788)
 shape = SubResource("BoxShape3D_kek77")
+
+[node name="motion_audio_player" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("11_6dp05")
+autoplay = true
+max_distance = 10.0

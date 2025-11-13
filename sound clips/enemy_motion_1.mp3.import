@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dnid4hmtgexcm"
+path="res://.godot/imported/enemy_motion_1.mp3-0aac54b729721cdf73a9b1fe96037e80.mp3str"
+
+[deps]
+
+source_file="res://sound clips/enemy_motion_1.mp3"
+dest_files=["res://.godot/imported/enemy_motion_1.mp3-0aac54b729721cdf73a9b1fe96037e80.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

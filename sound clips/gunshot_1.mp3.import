@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://coyth0oqhvvxh"
+path="res://.godot/imported/gunshot_1.mp3-880eede89ca7ebca8fdd3e8f6f6d106d.mp3str"
+
+[deps]
+
+source_file="res://sound clips/gunshot_1.mp3"
+dest_files=["res://.godot/imported/gunshot_1.mp3-880eede89ca7ebca8fdd3e8f6f6d106d.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
