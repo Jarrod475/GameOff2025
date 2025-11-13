@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://c50b6pqahdll1"]
+
+[ext_resource type="Texture2D" uid="uid://c4pw1up1uignn" path="res://sprites/bullet.png" id="1_d2qol"]
+[ext_resource type="Script" uid="uid://88tsmnh0fuiv" path="res://scripts/enemy_bullet.gd" id="2_qx7rs"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_d2qol"]
+radius = 0.33088905
+
+[node name="bullet" type="Sprite3D"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+billboard = 1
+texture_filter = 0
+texture = ExtResource("1_d2qol")
+script = ExtResource("2_qx7rs")
+
+[node name="light" type="OmniLight3D" parent="."]
+light_color = Color(1, 0.473, 0.06999999, 1)
+light_energy = 0.25
+
+[node name="area" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="area"]
+shape = SubResource("SphereShape3D_d2qol")
+
+[connection signal="body_entered" from="area" to="." method="_on_area_body_entered"]

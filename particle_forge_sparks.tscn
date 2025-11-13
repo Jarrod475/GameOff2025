@@ -1,0 +1,39 @@
+[gd_scene load_steps=7 format=3 uid="uid://7wa4epm4qb17"]
+
+[ext_resource type="Texture2D" uid="uid://chfpwexe6t7tj" path="res://sprites/forge_sparks.png" id="1_2sbm6"]
+
+[sub_resource type="Gradient" id="Gradient_cis5v"]
+colors = PackedColorArray(1, 1, 1, 1, 0.955323, 0, 0.204071, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_vhqbf"]
+gradient = SubResource("Gradient_cis5v")
+
+[sub_resource type="Curve" id="Curve_we0ke"]
+_data = [Vector2(0, 0.505618), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_8j6rx"]
+curve = SubResource("Curve_we0ke")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_we0ke"]
+particle_flag_disable_z = true
+direction = Vector3(0, 0, 0)
+spread = 180.0
+initial_velocity_max = 150.0
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_8j6rx")
+color_ramp = SubResource("GradientTexture1D_vhqbf")
+
+[node name="particle_forge_sparks" type="GPUParticles2D"]
+top_level = true
+z_index = 200
+emitting = false
+amount = 20
+texture = ExtResource("1_2sbm6")
+lifetime = 0.3
+one_shot = true
+speed_scale = 3.0
+explosiveness = 1.0
+randomness = 0.5
+trail_section_subdivisions = 3
+process_material = SubResource("ParticleProcessMaterial_we0ke")

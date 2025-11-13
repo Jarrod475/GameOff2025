@@ -39,6 +39,7 @@ folder_colors={
 [global_group]
 
 enemy="for le enemy"
+terrain=""
 
 [input]
 

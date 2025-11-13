@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=4 uid="uid://ducml2scdggkp"]
+[gd_scene load_steps=49 format=4 uid="uid://ducml2scdggkp"]
 
 [ext_resource type="Script" uid="uid://dou76rxoc6tpc" path="res://scripts/level_1_manager.gd" id="1_rrg2u"]
 [ext_resource type="Script" uid="uid://d3y7ouwo6arvx" path="res://scripts/cam_move_catcher.gd" id="2_w2dpl"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://d1n5jun2yi08y" path="res://scripts/text_display_system.gd" id="7_uk4ug"]
 [ext_resource type="Material" uid="uid://dt0s5vws40ify" path="res://materials/wave_room_1_floor.tres" id="9_pbogw"]
 [ext_resource type="PackedScene" uid="uid://ditp4nvpwwqaa" path="res://scenes/door.tscn" id="9_rrg2u"]
+[ext_resource type="Texture2D" uid="uid://chfpwexe6t7tj" path="res://sprites/forge_sparks.png" id="9_yl3pg"]
 [ext_resource type="Material" uid="uid://dkaj4xco80iig" path="res://materials/wave_room_1_wall_1.tres" id="10_gta0d"]
 [ext_resource type="Material" uid="uid://cqoc1o3cf0fs0" path="res://materials/wave_room_1_wall_2.tres" id="11_jmfga"]
 [ext_resource type="Material" uid="uid://cf7xfgktemuff" path="res://materials/pipe_1.tres" id="12_gta0d"]
@@ -400,6 +401,22 @@ label_settings = ExtResource("6_2wc17")
 horizontal_alignment = 1
 script = ExtResource("7_uk4ug")
 
+[node name="crosshair" type="TextureRect" parent="ColorRect/SubViewport/HUD"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -2.5
+offset_top = -2.5
+offset_right = 2.5
+offset_bottom = 2.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_yl3pg")
+expand_mode = 1
+
 [node name="Environment" type="Node3D" parent="ColorRect/SubViewport"]
 
 [node name="enemy_spawns" type="Node3D" parent="ColorRect/SubViewport/Environment"]
@@ -416,7 +433,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.9479103, 17.980656, 6.5873
 
 [node name="wave_room_1" type="Node3D" parent="ColorRect/SubViewport/Environment"]
 
-[node name="main" type="MeshInstance3D" parent="ColorRect/SubViewport/Environment/wave_room_1"]
+[node name="main" type="MeshInstance3D" parent="ColorRect/SubViewport/Environment/wave_room_1" groups=["terrain"]]
 layers = 2
 mesh = SubResource("ArrayMesh_6vu6c")
 skeleton = NodePath("")
@@ -425,17 +442,17 @@ surface_material_override/1 = ExtResource("10_gta0d")
 surface_material_override/2 = ExtResource("11_jmfga")
 surface_material_override/3 = ExtResource("12_jmfga")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="ColorRect/SubViewport/Environment/wave_room_1/main"]
+[node name="StaticBody3D" type="StaticBody3D" parent="ColorRect/SubViewport/Environment/wave_room_1/main" groups=["terrain"]]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ColorRect/SubViewport/Environment/wave_room_1/main/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_rrg2u")
 
-[node name="center_pillar" type="MeshInstance3D" parent="ColorRect/SubViewport/Environment/wave_room_1"]
+[node name="center_pillar" type="MeshInstance3D" parent="ColorRect/SubViewport/Environment/wave_room_1" groups=["terrain"]]
 mesh = SubResource("ArrayMesh_mkhwt")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("12_gta0d")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="ColorRect/SubViewport/Environment/wave_room_1/center_pillar"]
+[node name="StaticBody3D" type="StaticBody3D" parent="ColorRect/SubViewport/Environment/wave_room_1/center_pillar" groups=["terrain"]]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ColorRect/SubViewport/Environment/wave_room_1/center_pillar/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_yl3pg")

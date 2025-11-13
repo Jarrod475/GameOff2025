@@ -143,12 +143,14 @@ const ANIM_WALK_LEFT = "walk_left"
 const ANIM_WALK_RIGHT = "walk_right"
 
 # health variables
+signal health_changed()
 var health : float = 50:
 	get(): return health
 	set(val) : 
 		if health <= 0:
 			return
 		health = val
+		health_changed.emit(health)
 		if health <= 0:
 			animated_sprite.play("die")
 			set_physics_process(false)
