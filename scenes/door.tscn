@@ -254,7 +254,7 @@ material_override = ExtResource("2_18pbm")
 mesh = SubResource("ArrayMesh_lqtw3")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="door_1"]
+[node name="StaticBody3D" type="StaticBody3D" parent="door_1" groups=["terrain"]]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="door_1/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_yl3pg")
@@ -265,7 +265,7 @@ mesh = SubResource("ArrayMesh_n46dm")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("3_q5w8r")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="door_2"]
+[node name="StaticBody3D" type="StaticBody3D" parent="door_2" groups=["terrain"]]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="door_2/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_w2dpl")
