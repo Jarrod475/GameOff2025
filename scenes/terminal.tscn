@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://djrl1asykywps"]
+[gd_scene load_steps=17 format=4 uid="uid://djrl1asykywps"]
 
 [ext_resource type="Script" uid="uid://cmcsgpkuyjryh" path="res://scripts/terminal.gd" id="1_f8hcy"]
 [ext_resource type="Texture2D" uid="uid://xm8swrif4hg2" path="res://textures/metal_1.png" id="7_ih5y1"]
@@ -171,6 +171,9 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_1ewt4")
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dhnb1"]
+albedo_color = Color(0, 0, 0, 1)
+
 [node name="terminal" type="Node3D"]
 script = ExtResource("1_f8hcy")
 
@@ -224,6 +227,12 @@ horizontal_alignment = 0
 uppercase = true
 autowrap_mode = 1
 width = 171.95
+
+[node name="screen_back" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5147966, -0.009486198)
+material_override = SubResource("StandardMaterial3D_dhnb1")
+mesh = SubResource("ArrayMesh_r8pmq")
+skeleton = NodePath("")
 
 [connection signal="body_entered" from="area" to="." method="_on_area_body_entered"]
 [connection signal="body_exited" from="area" to="." method="_on_area_body_exited"]

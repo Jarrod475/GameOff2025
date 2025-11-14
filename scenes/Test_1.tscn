@@ -332,7 +332,6 @@ polygons = [PackedInt32Array(198, 199, 200), PackedInt32Array(199, 201, 200), Pa
 
 [node name="layout" type="CanvasLayer"]
 script = ExtResource("1_rrg2u")
-debug = true
 
 [node name="spawn_timer" type="Timer" parent="."]
 wait_time = 2.0

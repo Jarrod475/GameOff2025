@@ -144,6 +144,7 @@ const ANIM_WALK_RIGHT = "walk_right"
 
 # health variables
 signal health_changed()
+signal died()
 var health : float = 50:
 	get(): return health
 	set(val) : 
@@ -153,6 +154,7 @@ var health : float = 50:
 		health_changed.emit(health)
 		if health <= 0:
 			animated_sprite.play("die")
+			died.emit(self)
 			set_physics_process(false)
 			await get_tree().create_timer(3).timeout
 			queue_free()

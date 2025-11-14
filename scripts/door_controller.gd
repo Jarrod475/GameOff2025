@@ -34,7 +34,7 @@ func _on_area_3d_body_exited(body: Node3D) -> void:
 			light.material_override = light_yellow
 
 
-func _on_anim_animation_finished(anim_name: StringName) -> void:
+func _on_anim_animation_finished(_anim_name: StringName) -> void:
 	is_open = !is_open
 	if locked:
 		light.material_override = light_red

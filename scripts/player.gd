@@ -12,6 +12,8 @@ extends CharacterBody3D
 ## - Space: Jump
 ## - Shift: Sprint (optional)
 
+@export var debug = false
+
 # ============================================================================
 # MOVEMENT CONSTANTS
 # ============================================================================
@@ -245,6 +247,8 @@ func apply_head_bob(delta: float, input_dir: Vector2) -> void:
 # ============================================================================
 
 func die():
+	if debug:
+		return
 	dead = true
 	anim.play("die")
 

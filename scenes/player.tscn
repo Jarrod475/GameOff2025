@@ -74,6 +74,7 @@ height = 2.243103
 transform = Transform3D(-0.0011693673, 0, 0.99999934, 0, 1, 0, -0.99999934, 0, -0.0011693673, 0, 0, 0)
 collision_mask = 3
 script = ExtResource("1_3vyb7")
+debug = true
 base_speed = 5.0
 jump_velocity = 5.0
 strafe_run_multiplier = 1.0

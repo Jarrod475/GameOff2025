@@ -17,6 +17,8 @@ var activated = false
 
 signal terminal_activated()
 
+@export var animation_to_play = "intro_boot_up"
+
 func _ready() -> void:
 	$"../../../../input_catcher".interact.connect(player_interacted)
 
@@ -29,16 +31,23 @@ func _on_area_body_entered(body: Node3D) -> void:
 		light.visible = true
 
 func _on_area_body_exited(body: Node3D) -> void:
-	if activated:
-		return
 	if body.is_in_group("player"):
 		is_player_inside = false
+		if !activated:
+			screen.material_override = material_red
 
 func player_interacted():
+	
 	if activated or !is_player_inside:
 		return
-	screen.material_override = material_orange
-	anim.play("intro_boot_up")
-	label_bottom.text = "Installing..."
-	terminal_activated.emit()
 	activated = true
+	screen.material_override = material_orange
+	anim.play(animation_to_play)
+	label_bottom.text = "Loading..."
+	terminal_activated.emit()
+
+func reset_terminal():
+	anim.play("RESET")
+	screen.material_override = material_red
+	activated = false
+	label_bottom.text = "Press E"
