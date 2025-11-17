@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 GunData="*res://scripts/gun_data_singleton.gd"
+SceneLoader="*res://scripts/scene_loader.gd"
 
 [display]
 

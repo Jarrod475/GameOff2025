@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://ditp4nvpwwqaa"]
+[gd_scene load_steps=27 format=4 uid="uid://ditp4nvpwwqaa"]
 
 [ext_resource type="Script" uid="uid://dq1opgg24sdft" path="res://scripts/door_controller.gd" id="1_la1wf"]
 [ext_resource type="Material" uid="uid://cf7xfgktemuff" path="res://materials/pipe_1.tres" id="2_18pbm"]
@@ -6,6 +6,7 @@
 [ext_resource type="Material" uid="uid://cv48n2pke57dl" path="res://materials/pipe_2.tres" id="3_q5w8r"]
 [ext_resource type="Material" uid="uid://b77oo3cvecp75" path="res://materials/deny_red.tres" id="4_ju5n0"]
 [ext_resource type="Material" uid="uid://bihiqxuq421bn" path="res://materials/query_orange.tres" id="4_t58dd"]
+[ext_resource type="AudioStream" uid="uid://c71vt1o5t3um1" path="res://sound clips/door_1.mp3" id="5_t58dd"]
 
 [sub_resource type="Animation" id="Animation_w2dpl"]
 length = 0.001
@@ -237,12 +238,19 @@ shadow_mesh = SubResource("ArrayMesh_xsbav")
 [sub_resource type="BoxShape3D" id="BoxShape3D_yl3pg"]
 size = Vector3(4.859131, 1.6714478, 5.472183)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_t58dd"]
+size = Vector3(5.7192383, 6.2248535, 1)
+
 [node name="door" type="Node3D"]
 transform = Transform3D(-3.934025e-08, 0, 1, 0, 1, 0, -0.9, 0, -4.371139e-08, 0, 0, 0)
 script = ExtResource("1_la1wf")
 light_green = ExtResource("2_q5w8r")
 light_yellow = ExtResource("4_t58dd")
 light_red = ExtResource("4_ju5n0")
+
+[node name="audio" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1.1111112, 0, 3.5527137e-15, 0, 1, 0, 0, 0, 1, 0, 5.410321, 0)
+stream = ExtResource("5_t58dd")
 
 [node name="anim" type="AnimationPlayer" parent="."]
 libraries = {
@@ -317,6 +325,14 @@ spot_angle = 35.651512
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.026001222, 1.3821716, 0.31691742)
 shape = SubResource("BoxShape3D_yl3pg")
+
+[node name="invisible_wall" type="StaticBody3D" parent="."]
+input_ray_pickable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="invisible_wall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.04907225, 3.27771, -1.7763568e-15)
+shape = SubResource("BoxShape3D_t58dd")
+disabled = true
 
 [connection signal="animation_finished" from="anim" to="." method="_on_anim_animation_finished"]
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

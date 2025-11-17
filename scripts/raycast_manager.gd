@@ -16,7 +16,7 @@ func shoot_ray():
 		result.collider.health -= GunData.gun_damage
 
 	
-	
+
 	#if result:
 		#print("Hit:", result.collider.name)
 		#print("Hit position:", result.position)
