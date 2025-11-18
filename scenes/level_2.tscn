@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=4 uid="uid://ojpwsqqdojet"]
+[gd_scene load_steps=39 format=4 uid="uid://ojpwsqqdojet"]
 
 [ext_resource type="Script" uid="uid://d3y7ouwo6arvx" path="res://scripts/cam_move_catcher.gd" id="2_bv48q"]
 [ext_resource type="Shader" uid="uid://ddwxq4yfo2i7h" path="res://crt_shader.gdshader" id="3_k22d5"]
@@ -12,6 +12,7 @@
 [ext_resource type="Material" uid="uid://dkaj4xco80iig" path="res://materials/wave_room_1_wall_1.tres" id="11_bgibu"]
 [ext_resource type="Material" uid="uid://cqoc1o3cf0fs0" path="res://materials/wave_room_1_wall_2.tres" id="12_73m23"]
 [ext_resource type="Material" uid="uid://clqeh80lf00qv" path="res://materials/wave_room_1_roof.tres" id="13_45kkt"]
+[ext_resource type="PackedScene" uid="uid://ditp4nvpwwqaa" path="res://scenes/door.tscn" id="14_fldb1"]
 [ext_resource type="PackedScene" uid="uid://4usvgebcv5fj" path="res://scenes/player.tscn" id="17_3buw8"]
 
 [sub_resource type="Environment" id="Environment_ig7tw"]
@@ -439,6 +440,43 @@ skeleton = NodePath("")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.027163386, 0)
 visible = false
 navigation_mesh = SubResource("NavigationMesh_g2hoc")
+
+[node name="door" parent="ColorRect/SubViewport/Environment/level_2" instance=ExtResource("14_fldb1")]
+transform = Transform3D(-3.934025e-08, 0, 1, 0, 1, 0, -0.9, 0, -4.371139e-08, 0, -1.6833115, 0)
+
+[node name="door6" parent="ColorRect/SubViewport/Environment/level_2" instance=ExtResource("14_fldb1")]
+transform = Transform3D(-3.934025e-08, 0, 1, 0, 1, 0, -0.9, 0, -4.371139e-08, 12.663689, -1.6833115, 0)
+locked = true
+
+[node name="door2" parent="ColorRect/SubViewport/Environment/level_2" instance=ExtResource("14_fldb1")]
+transform = Transform3D(-3.934025e-08, 0, 1, 0, 1, 0, -0.9, 0, -4.371139e-08, -12.903953, -1.6833115, 0)
+
+[node name="door5" parent="ColorRect/SubViewport/Environment/level_2" instance=ExtResource("14_fldb1")]
+transform = Transform3D(-3.934025e-08, 0, 1, 0, 1, 0, -0.9, 0, -4.371139e-08, -12.903953, -2.00728, 12.301383)
+
+[node name="door7" parent="ColorRect/SubViewport/Environment/level_2" instance=ExtResource("14_fldb1")]
+transform = Transform3D(-0.9, 0, -8.742278e-08, 0, 1, 0, 7.86805e-08, 0, -1, -10.036891, -2.00728, 20.123798)
+
+[node name="door8" parent="ColorRect/SubViewport/Environment/level_2" instance=ExtResource("14_fldb1")]
+transform = Transform3D(-0.9, 0, -8.742278e-08, 0, 1, 0, 7.86805e-08, 0, -1, -32.396706, -2.00728, 19.539618)
+
+[node name="door9" parent="ColorRect/SubViewport/Environment/level_2" instance=ExtResource("14_fldb1")]
+transform = Transform3D(-3.934025e-08, 0, -1, 0, 1, 0, 0.9, 0, -4.371139e-08, -27.458996, -2.00728, 27.4753)
+
+[node name="door3" parent="ColorRect/SubViewport/Environment/level_2" instance=ExtResource("14_fldb1")]
+transform = Transform3D(-3.934025e-08, 0, 1, 0, 1, 0, -0.9, 0, -4.371139e-08, -35.37642, -1.6833115, 0)
+
+[node name="door11" parent="ColorRect/SubViewport/Environment/level_2" instance=ExtResource("14_fldb1")]
+transform = Transform3D(0.9, 0, 0, 0, 1, 0, 0, 0, 1, -32.574577, -1.6833115, -7.195526)
+
+[node name="door12" parent="ColorRect/SubViewport/Environment/level_2" instance=ExtResource("14_fldb1")]
+transform = Transform3D(-3.934025e-08, 0, -1, 0, 1, 0, 0.9, 0, -4.371139e-08, -17.291374, -1.6833115, -14.978527)
+
+[node name="door4" parent="ColorRect/SubViewport/Environment/level_2" instance=ExtResource("14_fldb1")]
+transform = Transform3D(-3.934025e-08, 0, 1, 0, 1, 0, -0.9, 0, -4.371139e-08, -79.95601, -1.6833115, 0)
+
+[node name="door10" parent="ColorRect/SubViewport/Environment/level_2" instance=ExtResource("14_fldb1")]
+transform = Transform3D(-0.9, 0, -8.742278e-08, 0, 1, 0, 7.86805e-08, 0, -1, -60.120213, -1.6833115, 2.758255)
 
 [connection signal="timeout" from="spawn_timer" to="." method="_on_spawn_timer_timeout"]
 [connection signal="timeout" from="input_catcher/fire_timer" to="input_catcher" method="_on_fire_timer_timeout"]
