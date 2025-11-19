@@ -1,0 +1,13 @@
+level 2 room plan 
+
+goal: escape the facility.
+
+spawn
+go to warehouse 2. fight enemies. unlock door to cafeteria. 
+in cafeteria fight more enemies and find key to exit.
+open exit and meet the clanker.
+run from clanker into warehouse 1
+activates all drones in warehouse 1
+giga battle in warehouse 1 while avoiding immune clanker.
+after droens are dead. all clanker clones are activated and u need to cod zombies your way to the exit
+game over?

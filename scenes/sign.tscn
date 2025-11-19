@@ -1,0 +1,49 @@
+[gd_scene load_steps=6 format=3 uid="uid://ucb1mafy22bb"]
+
+[ext_resource type="FontFile" uid="uid://dhvx4kk6q8b61" path="res://Misc/Tektur-VariableFont_wdth,wght.ttf" id="1_shbub"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_0tk13"]
+size = Vector3(1, 0.1, 0.1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_shbub"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_kd50q"]
+size = Vector3(0.1, 0.6, 0.1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_8yyji"]
+size = Vector3(1, 0.5, 0.01)
+
+[node name="sign" type="Node3D"]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+
+[node name="mesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
+mesh = SubResource("BoxMesh_0tk13")
+surface_material_override/0 = SubResource("StandardMaterial3D_shbub")
+
+[node name="mesh2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+mesh = SubResource("BoxMesh_0tk13")
+surface_material_override/0 = SubResource("StandardMaterial3D_shbub")
+
+[node name="mesh3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0)
+mesh = SubResource("BoxMesh_kd50q")
+surface_material_override/0 = SubResource("StandardMaterial3D_shbub")
+
+[node name="mesh4" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 0)
+mesh = SubResource("BoxMesh_kd50q")
+surface_material_override/0 = SubResource("StandardMaterial3D_shbub")
+
+[node name="mesh5" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_8yyji")
+surface_material_override/0 = SubResource("StandardMaterial3D_shbub")
+
+[node name="label" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.02898994)
+modulate = Color(1, 0.6333333, 0, 1)
+text = "Server room"
+font = ExtResource("1_shbub")
+font_size = 27

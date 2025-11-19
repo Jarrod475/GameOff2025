@@ -203,7 +203,7 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_xsbav")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_yl3pg"]
-size = Vector3(4.859131, 1.6714478, 5.472183)
+size = Vector3(4.859131, 1.6714478, 2.0325356)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_t58dd"]
 size = Vector3(5.7192383, 6.2248535, 1)
@@ -246,6 +246,7 @@ surface_material_override/0 = ExtResource("3_q5w8r")
 shape = SubResource("ConcavePolygonShape3D_w2dpl")
 
 [node name="door_frame" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.98, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 mesh = ExtResource("8_ju5n0")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("2_18pbm")
@@ -290,7 +291,7 @@ spot_angle = 35.651512
 [node name="Area3D" type="Area3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.026001222, 1.3821716, 0.31691742)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.026001226, 1.3821716, 0.0007228862)
 shape = SubResource("BoxShape3D_yl3pg")
 
 [node name="invisible_wall" type="StaticBody3D" parent="."]
