@@ -207,6 +207,7 @@ metallic_specular = 0.0
 size = Vector3(0.6069946, 2.044464, 0.7202759)
 
 [node name="enemy_1" type="CharacterBody3D" groups=["enemy"]]
+collision_mask = 9
 floor_stop_on_slope = false
 script = ExtResource("1_l21ug")
 player_path = NodePath("../Player")

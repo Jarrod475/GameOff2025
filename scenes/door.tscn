@@ -211,6 +211,7 @@ size = Vector3(5.7192383, 6.2248535, 1)
 [node name="door" type="Node3D"]
 transform = Transform3D(-3.934025e-08, 0, 1, 0, 1, 0, -0.9, 0, -4.371139e-08, 0, 0, 0)
 script = ExtResource("1_la1wf")
+locked = null
 light_green = ExtResource("2_q5w8r")
 light_yellow = ExtResource("4_t58dd")
 light_red = ExtResource("4_ju5n0")

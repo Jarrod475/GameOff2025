@@ -1,0 +1,40 @@
+[gd_scene load_steps=3 format=3 uid="uid://dtvv2ns6q6ssw"]
+
+[ext_resource type="PackedScene" uid="uid://b72l8se8gtbns" path="res://scenes/barrel.tscn" id="1_ybnn8"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ybnn8"]
+radius = 2.0297852
+height = 4.0595703
+
+[node name="barrel_bundle" type="Node3D"]
+
+[node name="barrel" parent="." instance=ExtResource("1_ybnn8")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.2052393, -1.3963786, 1.2472143)
+
+[node name="barrel2" parent="." instance=ExtResource("1_ybnn8")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.12481594, -1.3963786, 0.25790596)
+
+[node name="barrel3" parent="." instance=ExtResource("1_ybnn8")]
+transform = Transform3D(0.4374832, 0, -0.24209182, 0, 0.5, 0, 0.24209182, 0, 0.4374832, 1.0667639, -1.3963786, 0.6629)
+
+[node name="barrel7" parent="." instance=ExtResource("1_ybnn8")]
+transform = Transform3D(0.4374832, 0, -0.24209182, 0, 0.5, 0, 0.24209182, 0, 0.4374832, 0.5286131, -0.11344159, 0.6629)
+
+[node name="barrel8" parent="." instance=ExtResource("1_ybnn8")]
+transform = Transform3D(0.4374832, 0, -0.24209182, 0, 0.5, 0, 0.24209182, 0, 0.4374832, 0.3706808, -0.11344159, -0.46084213)
+
+[node name="barrel4" parent="." instance=ExtResource("1_ybnn8")]
+transform = Transform3D(0.32672352, 0, -0.37848613, 0, 0.5, 0, 0.37848613, 0, 0.32672352, -0.10159397, -1.3963786, -0.7570753)
+
+[node name="barrel5" parent="." instance=ExtResource("1_ybnn8")]
+transform = Transform3D(0.32672352, 0, -0.37848613, 0, 0.5, 0, 0.37848613, 0, 0.32672352, 0.59473515, -1.3963786, -1.4644117)
+
+[node name="barrel6" parent="." instance=ExtResource("1_ybnn8")]
+transform = Transform3D(0.10261529, 0, -0.4893568, 0, 0.5, 0, 0.4893568, 0, 0.10261529, 0.90367794, -1.3963786, -0.48674107)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+collision_layer = 8
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.21775645, -1.1673625, -0.19337404)
+shape = SubResource("CapsuleShape3D_ybnn8")

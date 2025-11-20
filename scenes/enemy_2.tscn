@@ -218,6 +218,7 @@ metallic_specular = 0.0
 size = Vector3(0.9267311, 0.8218422, 0.7202759)
 
 [node name="enemy_2" type="CharacterBody3D" groups=["enemy"]]
+collision_mask = 9
 motion_mode = 1
 slide_on_ceiling = false
 floor_stop_on_slope = false
@@ -234,7 +235,7 @@ direction_buffer_angle = 60.0
 animation_switch_hysteresis = 0.0
 
 [node name="fire_point" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1010252, 0.39512873)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5324575, 0.39512873)
 script = ExtResource("2_lxmbh")
 
 [node name="audio" type="AudioStreamPlayer3D" parent="fire_point"]
@@ -265,7 +266,7 @@ color_ramp = SubResource("Gradient_fdqbe")
 script = ExtResource("2_a2yeo")
 
 [node name="GFX" type="AnimatedSprite3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00288135, 1.3918076, 0.3452947)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00288135, 1.7506653, 0.3452947)
 billboard = 2
 shaded = true
 texture_filter = 0
@@ -281,14 +282,14 @@ light_energy = 0.602
 omni_range = 2.33
 
 [node name="shadow" type="MeshInstance3D" parent="GFX"]
-transform = Transform3D(0.57584137, 0, 0, 0, 0.001, 0, 0, 0, 0.3385413, 0, -1.3471125, 0)
+transform = Transform3D(0.57584137, 0, 0, 0, 0.001, 0, 0, 0, 0.3385413, 0, -1.6519268, 0)
 material_override = SubResource("StandardMaterial3D_0xm2m")
 mesh = SubResource("CylinderMesh_h2yge")
 
 [node name="navagent" type="NavigationAgent3D" parent="."]
 
 [node name="Collider" type="CollisionShape3D" parent="."]
-transform = Transform3D(0.5822568, 0, 0, 0, 0.5822568, 0, 0, 0, 0.5822568, 0.0114014745, 1.1041139, 0.32357788)
+transform = Transform3D(0.5822568, 0, 0, 0, 0.5822568, 0, 0, 0, 0.5822568, 0.0114014745, 1.4818971, 0.32357788)
 shape = SubResource("BoxShape3D_kek77")
 
 [node name="motion_audio_player" type="AudioStreamPlayer3D" parent="."]
