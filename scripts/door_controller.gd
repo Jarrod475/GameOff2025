@@ -65,7 +65,7 @@ func unlock():
 	light.material_override = light_green
 
 func toggle_invisible_wall():
-	invisible_wall_coll.disabled = !invisible_wall_coll.disabled
+	invisible_wall_coll.call_deferred("set_disabled",!invisible_wall_coll.disabled) 
 
 func toggle_stay_open():
 	locked_in_open_pos = !locked_in_open_pos
