@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=4 uid="uid://ojpwsqqdojet"]
+[gd_scene load_steps=68 format=4 uid="uid://ojpwsqqdojet"]
 
 [ext_resource type="Script" uid="uid://s1nr1cs2xopi" path="res://scripts/level_2_manager.gd" id="1_vwfin"]
 [ext_resource type="Script" uid="uid://d3y7ouwo6arvx" path="res://scripts/cam_move_catcher.gd" id="2_bv48q"]
@@ -23,6 +23,7 @@
 [ext_resource type="PackedScene" uid="uid://ucb1mafy22bb" path="res://scenes/sign.tscn" id="15_guvtl"]
 [ext_resource type="FontFile" uid="uid://dhvx4kk6q8b61" path="res://Misc/Tektur-VariableFont_wdth,wght.ttf" id="15_igmy8"]
 [ext_resource type="PackedScene" uid="uid://4usvgebcv5fj" path="res://scenes/player.tscn" id="17_3buw8"]
+[ext_resource type="Texture2D" uid="uid://b3beat4udc8d8" path="res://sprites/keycard.png" id="21_va6c3"]
 [ext_resource type="PackedScene" uid="uid://4ln7quvtnp76" path="res://scenes/enemy_1.tscn" id="22_1sb0y"]
 [ext_resource type="Material" uid="uid://cv48n2pke57dl" path="res://materials/pipe_2.tres" id="24_63d2t"]
 
@@ -309,6 +310,43 @@ shadow_mesh = SubResource("ArrayMesh_eaew5")
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_k22d5"]
 points = PackedVector3Array(1.1200104, 0.47836888, 2.9249454, -1.1200027, 0.47836888, 2.9249454, 1.1200104, 0.250363, 2.9249454, 1.1200104, 0.47836888, -2.9255257, -1.1200027, 0.250363, 2.9249454, -1.1200027, 0.47836888, -2.9255257, 0.99985313, -0.9792706, 2.6116605, 1.1200104, 0.250363, -2.9255257, -1.1200027, 0.250363, -2.9255257, -1.0000647, -0.9792706, 2.6116605, 0.99985313, -0.9792706, -2.6122406, -1.0000647, -0.9792706, -2.6122406)
 
+[sub_resource type="Animation" id="Animation_pc3at"]
+resource_name = "float"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.024730682, -0.11690879, 2.104395), Vector3(-0.024730682, 0.113799095, 2.104395)]
+}
+
+[sub_resource type="Animation" id="Animation_bgibu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.024730682, -0.11690879, 2.104395)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_73m23"]
+_data = {
+&"RESET": SubResource("Animation_bgibu"),
+&"float": SubResource("Animation_pc3at")
+}
+
 [sub_resource type="BoxMesh" id="BoxMesh_0tk13"]
 size = Vector3(1, 0.1, 0.1)
 
@@ -385,7 +423,7 @@ metallic = 1.0
 metallic_specular = 0.0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vwfin"]
-size = Vector3(3.715332, 4.8380127, 15.987732)
+size = Vector3(5.251343, 4.8380127, 0.7566376)
 
 [node name="layout" type="CanvasLayer"]
 script = ExtResource("1_vwfin")
@@ -485,8 +523,20 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.114977, 9.814074, 0.758674
 [node name="spawn_point_4" type="Node3D" parent="ColorRect/SubViewport/Environment/enemy_spawns_wh2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.082891, 9.994744, 10.837231)
 
+[node name="enemy_spawns_cafe" type="Node3D" parent="ColorRect/SubViewport/Environment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -52.12345, -4.292143, 6.4506702)
+
+[node name="spawn_point_2" type="Node3D" parent="ColorRect/SubViewport/Environment/enemy_spawns_cafe"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.19688416, 8.03289, -0.12677574)
+
+[node name="spawn_point_3" type="Node3D" parent="ColorRect/SubViewport/Environment/enemy_spawns_cafe"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.973843, 7.382846, 0.17389965)
+
+[node name="spawn_point_4" type="Node3D" parent="ColorRect/SubViewport/Environment/enemy_spawns_cafe"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.07898712, 7.081321, 9.209805)
+
 [node name="Player" parent="ColorRect/SubViewport/Environment" instance=ExtResource("17_3buw8")]
-transform = Transform3D(-0.0011693673, 0, 0.99999934, 0, 1, 0, -0.99999934, 0, -0.0011693673, 23.647776, 3.4868908, 0.6344069)
+transform = Transform3D(-0.0011693673, 0, 0.99999934, 0, 1, 0, -0.99999934, 0, -0.0011693673, -35.55123, 3.4868908, 0.6344069)
 base_speed = 6.0
 
 [node name="lights" type="Node3D" parent="ColorRect/SubViewport/Environment"]
@@ -733,6 +783,17 @@ transform = Transform3D(0.4738452, 0, -0.15959544, 0, 0.5, 0, 0.15959544, 0, 0.4
 
 [node name="barrel5" parent="ColorRect/SubViewport/Environment/level_2/object_parent/cafe" instance=ExtResource("9_bv48q")]
 transform = Transform3D(0.49447957, 0, -0.07409461, 0, 0.5, 0, 0.07409461, 0, 0.49447957, -6.6482353, -1.3597806, -1.7730856)
+
+[node name="keycard" type="Sprite3D" parent="ColorRect/SubViewport/Environment/level_2/object_parent/cafe"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.024730682, -0.11690879, 2.104395)
+billboard = 2
+texture = ExtResource("21_va6c3")
+
+[node name="anim" type="AnimationPlayer" parent="ColorRect/SubViewport/Environment/level_2/object_parent/cafe/keycard"]
+libraries = {
+&"": SubResource("AnimationLibrary_73m23")
+}
+autoplay = "float"
 
 [node name="signs" type="Node3D" parent="ColorRect/SubViewport/Environment/level_2/object_parent"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.339752, -2.2996278, 15.446782)
@@ -1108,6 +1169,30 @@ skeleton = NodePath("")
 surface_material_override/0 = ExtResource("24_63d2t")
 surface_material_override/1 = SubResource("StandardMaterial3D_va6c3")
 
+[node name="pipe_vent_cafe" type="Node3D" parent="ColorRect/SubViewport/Environment/level_2"]
+transform = Transform3D(1, 0, 0, 0, 0.8966642, -0.44271126, 0, 0.44271126, 0.8966642, -63.56237, 4.0290275, 5.7527537)
+
+[node name="pipe_vent" type="MeshInstance3D" parent="ColorRect/SubViewport/Environment/level_2/pipe_vent_cafe"]
+transform = Transform3D(0.5, 0, 0, 0, 0.45315406, 0.21130924, 0, -0.21130924, 0.45315406, -5.064644, -0.01249218, -0.7517483)
+mesh = SubResource("ArrayMesh_i2cay")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("24_63d2t")
+surface_material_override/1 = SubResource("StandardMaterial3D_va6c3")
+
+[node name="pipe_vent2" type="MeshInstance3D" parent="ColorRect/SubViewport/Environment/level_2/pipe_vent_cafe"]
+transform = Transform3D(0.5, 0, 0, 0, 0.45315412, 0.21130928, 0, -0.21130928, 0.45315412, 10.092373, -0.01249218, -0.7517483)
+mesh = SubResource("ArrayMesh_i2cay")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("24_63d2t")
+surface_material_override/1 = SubResource("StandardMaterial3D_va6c3")
+
+[node name="pipe_vent3" type="MeshInstance3D" parent="ColorRect/SubViewport/Environment/level_2/pipe_vent_cafe"]
+transform = Transform3D(-0.49999836, -2.8587703e-05, -0.0012824482, 0.00056789507, 0.44328818, -0.2312916, 0.0011502109, -0.2312924, -0.44328657, -4.7530975, 5.3543377, 10.118188)
+mesh = SubResource("ArrayMesh_i2cay")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("24_63d2t")
+surface_material_override/1 = SubResource("StandardMaterial3D_va6c3")
+
 [node name="enemy_1" parent="ColorRect/SubViewport/Environment" instance=ExtResource("22_1sb0y")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.916474, 0.21576619, 38.559093)
 
@@ -1118,6 +1203,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.532125, 0, -15.223862)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.3034406, 1.9190063, 0.15728092)
 shape = SubResource("BoxShape3D_vwfin")
 
+[node name="cafe_trigger" type="Area3D" parent="ColorRect/SubViewport/Environment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -46.965286, 0, 4.3350315)
+
+[node name="collider" type="CollisionShape3D" parent="ColorRect/SubViewport/Environment/cafe_trigger"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.1147804, 1.9190063, 0.9781046)
+shape = SubResource("BoxShape3D_vwfin")
+
 [connection signal="timeout" from="spawn_timer" to="." method="_on_spawn_timer_timeout"]
 [connection signal="timeout" from="input_catcher/fire_timer" to="input_catcher" method="_on_fire_timer_timeout"]
 [connection signal="body_entered" from="ColorRect/SubViewport/Environment/warehouse2_trigger" to="." method="_on_warehouse_2_trigger_body_entered"]
+[connection signal="body_entered" from="ColorRect/SubViewport/Environment/cafe_trigger" to="." method="_on_cafe_trigger_body_entered"]

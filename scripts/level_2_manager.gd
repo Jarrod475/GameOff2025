@@ -17,6 +17,7 @@ var enemy_counter = 0
 
 ##triggers
 var warehouse_2_trigger = false
+var cafe_trigger = false
 
 func _ready() -> void:
 	await get_tree().create_timer(1).timeout
@@ -25,23 +26,63 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
-
+	if warehouse_2_trigger and spawn_limit_reached and enemy_list.is_empty():
+		spawn_limit_reached = false
+		spawn_timer.stop()
+		warehouse_2_finished()
+	if cafe_trigger and spawn_limit_reached and enemy_list.is_empty():
+		spawn_limit_reached = false
+		spawn_timer.stop()
+		cafe_finished()
+		
 
 func _on_warehouse_2_trigger_body_entered(body: Node3D) -> void:
 	if body.is_in_group("player"):
 		trigger_warehouse_2_fight()
 
 
+func _on_cafe_trigger_body_entered(body: Node3D) -> void:
+	if body.is_in_group("player"):
+		trigger_cafe_fight()
+	
+	
+	
 func trigger_warehouse_2_fight():
 	if warehouse_2_trigger:
 		return
+	$ColorRect/SubViewport/Environment/warehouse2_trigger.monitoring = false
 	warehouse_2_trigger = true
 	spawn_point_parent = $ColorRect/SubViewport/Environment/enemy_spawns_wh2
 	var door_1 = $ColorRect/SubViewport/Environment/level_2/door12
 	door_1.toggle_invisible_wall()
 	door_1.lock()
 	spawn_timer.start()
+
+
+func trigger_cafe_fight():
+	if cafe_trigger:
+		return
+	cafe_trigger = true
+	$ColorRect/SubViewport/Environment/cafe_trigger.monitoring = false
+	spawn_point_parent= $ColorRect/SubViewport/Environment/enemy_spawns_cafe
+	var door_1 = $ColorRect/SubViewport/Environment/level_2/door10
+	door_1.toggle_invisible_wall()
+	door_1.lock()
+	spawn_timer.start()
+
+func warehouse_2_finished():
+	$ColorRect/SubViewport/Environment/level_2/door11.unlock()
+	$ColorRect/SubViewport/Environment/level_2/door12.unlock()
+	$ColorRect/SubViewport/Environment/level_2/door12.toggle_invisible_wall()
+	$ColorRect/SubViewport/Environment/level_2/door2.unlock()
+	enemy_list.clear()
+	
+
+func cafe_finished():
+	$ColorRect/SubViewport/Environment/level_2/door10.toggle_invisible_wall()
+	$ColorRect/SubViewport/Environment/level_2/door10.unlock()
+	print("CAFE DONEZO")
+	##continue here
 
 
 func _on_spawn_timer_timeout() -> void:
@@ -63,3 +104,6 @@ func _on_spawn_timer_timeout() -> void:
 
 func remove_enemy(enemy_to_remove):
 	enemy_list.erase(enemy_to_remove)
+
+
+	
