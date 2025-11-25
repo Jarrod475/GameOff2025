@@ -310,6 +310,21 @@ shadow_mesh = SubResource("ArrayMesh_eaew5")
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_k22d5"]
 points = PackedVector3Array(1.1200104, 0.47836888, 2.9249454, -1.1200027, 0.47836888, 2.9249454, 1.1200104, 0.250363, 2.9249454, 1.1200104, 0.47836888, -2.9255257, -1.1200027, 0.250363, 2.9249454, -1.1200027, 0.47836888, -2.9255257, 0.99985313, -0.9792706, 2.6116605, 1.1200104, 0.250363, -2.9255257, -1.1200027, 0.250363, -2.9255257, -1.0000647, -0.9792706, 2.6116605, 0.99985313, -0.9792706, -2.6122406, -1.0000647, -0.9792706, -2.6122406)
 
+[sub_resource type="Animation" id="Animation_bgibu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.024730682, -0.11690879, 2.104395)]
+}
+
 [sub_resource type="Animation" id="Animation_pc3at"]
 resource_name = "float"
 loop_mode = 1
@@ -324,21 +339,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector3(-0.024730682, -0.11690879, 2.104395), Vector3(-0.024730682, 0.113799095, 2.104395)]
-}
-
-[sub_resource type="Animation" id="Animation_bgibu"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(-0.024730682, -0.11690879, 2.104395)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_73m23"]
@@ -515,13 +515,13 @@ expand_mode = 1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.232418, -3.482665, -21.122894)
 
 [node name="spawn_point_2" type="Node3D" parent="ColorRect/SubViewport/Environment/enemy_spawns_wh2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.247473, 10.091627, 0.6477566)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.247473, 9.263737, 0.6477566)
 
 [node name="spawn_point_3" type="Node3D" parent="ColorRect/SubViewport/Environment/enemy_spawns_wh2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.114977, 9.814074, 0.7586746)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.114977, 8.472038, 0.7586746)
 
 [node name="spawn_point_4" type="Node3D" parent="ColorRect/SubViewport/Environment/enemy_spawns_wh2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.082891, 9.994744, 10.837231)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.767702, 9.88456, 11.781329)
 
 [node name="enemy_spawns_cafe" type="Node3D" parent="ColorRect/SubViewport/Environment"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -52.12345, -4.292143, 6.4506702)
@@ -535,8 +535,44 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.973843, 7.382846, 0.173899
 [node name="spawn_point_4" type="Node3D" parent="ColorRect/SubViewport/Environment/enemy_spawns_cafe"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.07898712, 7.081321, 9.209805)
 
+[node name="enemy_spawns_endgame" type="Node3D" parent="ColorRect/SubViewport/Environment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -52.12345, -4.292143, 6.4506702)
+
+[node name="spawn_point_2" type="Node3D" parent="ColorRect/SubViewport/Environment/enemy_spawns_endgame"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.19688416, 8.03289, -0.12677574)
+
+[node name="spawn_point_3" type="Node3D" parent="ColorRect/SubViewport/Environment/enemy_spawns_endgame"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.973843, 7.382846, 0.17389965)
+
+[node name="spawn_point_4" type="Node3D" parent="ColorRect/SubViewport/Environment/enemy_spawns_endgame"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.07898712, 7.081321, 9.209805)
+
+[node name="spawn_point_5" type="Node3D" parent="ColorRect/SubViewport/Environment/enemy_spawns_endgame"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.138504, 10.073215, -26.925808)
+
+[node name="spawn_point_6" type="Node3D" parent="ColorRect/SubViewport/Environment/enemy_spawns_endgame"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46.006012, 9.281516, -26.81489)
+
+[node name="spawn_point_7" type="Node3D" parent="ColorRect/SubViewport/Environment/enemy_spawns_endgame"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45.973923, 9.2846, -16.736334)
+
+[node name="spawn_point_8" type="Node3D" parent="ColorRect/SubViewport/Environment/enemy_spawns_endgame"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46.06803, 11.642341, 41.448822)
+
+[node name="spawn_point_9" type="Node3D" parent="ColorRect/SubViewport/Environment/enemy_spawns_endgame"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 52.81201, 11.597875, 41.448822)
+
+[node name="spawn_point_10" type="Node3D" parent="ColorRect/SubViewport/Environment/enemy_spawns_endgame"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 66.04782, 12.104398, 29.42423)
+
+[node name="spawn_point_11" type="Node3D" parent="ColorRect/SubViewport/Environment/enemy_spawns_endgame"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 47.10789, 10.067177, 15.060953)
+
+[node name="spawn_point_12" type="Node3D" parent="ColorRect/SubViewport/Environment/enemy_spawns_endgame"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.889153, 8.469322, 13.862312)
+
 [node name="Player" parent="ColorRect/SubViewport/Environment" instance=ExtResource("17_3buw8")]
-transform = Transform3D(-0.0011693673, 0, 0.99999934, 0, 1, 0, -0.99999934, 0, -0.0011693673, -35.55123, 3.4868908, 0.6344069)
+transform = Transform3D(-0.0011693673, 0, 0.99999934, 0, 1, 0, -0.99999934, 0, -0.0011693673, -8.464715, 3.4868908, -10.202888)
 base_speed = 6.0
 
 [node name="lights" type="Node3D" parent="ColorRect/SubViewport/Environment"]
@@ -1193,8 +1229,43 @@ skeleton = NodePath("")
 surface_material_override/0 = ExtResource("24_63d2t")
 surface_material_override/1 = SubResource("StandardMaterial3D_va6c3")
 
-[node name="enemy_1" parent="ColorRect/SubViewport/Environment" instance=ExtResource("22_1sb0y")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.916474, 0.21576619, 38.559093)
+[node name="pipe_vent_wh1" type="Node3D" parent="ColorRect/SubViewport/Environment/level_2"]
+transform = Transform3D(1, 0, 0, 0, 0.8966642, -0.44271126, 0, 0.44271126, 0.8966642, -17.47305, 6.930636, 31.442183)
+
+[node name="pipe_vent" type="MeshInstance3D" parent="ColorRect/SubViewport/Environment/level_2/pipe_vent_wh1"]
+transform = Transform3D(0.5, 0, 0, 0, 0.45315427, 0.21130937, 0, -0.21130937, 0.45315427, -3.669259, -5.808016, -9.348619)
+mesh = SubResource("ArrayMesh_i2cay")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("24_63d2t")
+surface_material_override/1 = SubResource("StandardMaterial3D_va6c3")
+
+[node name="pipe_vent2" type="MeshInstance3D" parent="ColorRect/SubViewport/Environment/level_2/pipe_vent_wh1"]
+transform = Transform3D(0.5, 0, 0, 0, 0.21130943, -0.45315447, 0, 0.45315447, 0.21130943, 15.44924, 3.6977425, 3.1700249)
+mesh = SubResource("ArrayMesh_i2cay")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("24_63d2t")
+surface_material_override/1 = SubResource("StandardMaterial3D_va6c3")
+
+[node name="pipe_vent3" type="MeshInstance3D" parent="ColorRect/SubViewport/Environment/level_2/pipe_vent_wh1"]
+transform = Transform3D(-0.49999836, -2.8587703e-05, -0.0012824482, 0.0005678952, 0.44328827, -0.23129168, 0.0011502113, -0.23129247, -0.4432867, -4.7530975, 8.13929, 15.75881)
+mesh = SubResource("ArrayMesh_i2cay")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("24_63d2t")
+surface_material_override/1 = SubResource("StandardMaterial3D_va6c3")
+
+[node name="pipe_vent4" type="MeshInstance3D" parent="ColorRect/SubViewport/Environment/level_2/pipe_vent_wh1"]
+transform = Transform3D(-0.49999836, -2.8587703e-05, -0.0012824482, 0.0005678952, 0.4432883, -0.23129168, 0.0011502114, -0.23129249, -0.4432867, 1.9041443, 8.139288, 15.75881)
+mesh = SubResource("ArrayMesh_i2cay")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("24_63d2t")
+surface_material_override/1 = SubResource("StandardMaterial3D_va6c3")
+
+[node name="pipe_vent5" type="MeshInstance3D" parent="ColorRect/SubViewport/Environment/level_2/pipe_vent_wh1"]
+transform = Transform3D(-0.001424596, 0.28876626, 0.40818214, -0.22071578, 0.3658982, -0.2596225, -0.44864538, -0.18092434, 0.1264279, -29.660244, -6.964901, -8.882978)
+mesh = SubResource("ArrayMesh_i2cay")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("24_63d2t")
+surface_material_override/1 = SubResource("StandardMaterial3D_va6c3")
 
 [node name="warehouse2_trigger" type="Area3D" parent="ColorRect/SubViewport/Environment"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.532125, 0, -15.223862)
@@ -1204,11 +1275,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.3034406, 1.9190063, 0.15728
 shape = SubResource("BoxShape3D_vwfin")
 
 [node name="cafe_trigger" type="Area3D" parent="ColorRect/SubViewport/Environment"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -46.965286, 0, 4.3350315)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -46.965286, 0, 13.366433)
 
 [node name="collider" type="CollisionShape3D" parent="ColorRect/SubViewport/Environment/cafe_trigger"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.1147804, 1.9190063, 0.9781046)
 shape = SubResource("BoxShape3D_vwfin")
+
+[node name="enemy_1" parent="ColorRect/SubViewport/Environment" instance=ExtResource("22_1sb0y")]
+process_mode = 4
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -61.543205, 0.008785725, -0.3911977)
 
 [connection signal="timeout" from="spawn_timer" to="." method="_on_spawn_timer_timeout"]
 [connection signal="timeout" from="input_catcher/fire_timer" to="input_catcher" method="_on_fire_timer_timeout"]

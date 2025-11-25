@@ -9,19 +9,23 @@ var spawn_point_parent
 
 
 @onready var spawn_timer = $spawn_timer
-var spawn_pipe_index = 1
+var spawn_pipe_index = 0
+var spawn_pipe_index_max = 3
 var enemy_list = []
-var enemy_limit = 1
+var enemy_limit = 10
 var spawn_limit_reached = false
 var enemy_counter = 0
 
 ##triggers
 var warehouse_2_trigger = false
 var cafe_trigger = false
+var trigger_endgame = false
 
 func _ready() -> void:
+	$ColorRect/SubViewport/Environment/level_2/door4.opening.connect(door_4_opening)
 	await get_tree().create_timer(1).timeout
 	text_controller.display_text("I need to find a way out of here...")
+	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -43,6 +47,7 @@ func _on_warehouse_2_trigger_body_entered(body: Node3D) -> void:
 
 func _on_cafe_trigger_body_entered(body: Node3D) -> void:
 	if body.is_in_group("player"):
+		$ColorRect/SubViewport/Environment/level_2/object_parent/cafe/keycard.visible = false
 		trigger_cafe_fight()
 	
 	
@@ -50,7 +55,7 @@ func _on_cafe_trigger_body_entered(body: Node3D) -> void:
 func trigger_warehouse_2_fight():
 	if warehouse_2_trigger:
 		return
-	$ColorRect/SubViewport/Environment/warehouse2_trigger.monitoring = false
+	$ColorRect/SubViewport/Environment/warehouse2_trigger.set_deferred("monitoring",false)
 	warehouse_2_trigger = true
 	spawn_point_parent = $ColorRect/SubViewport/Environment/enemy_spawns_wh2
 	var door_1 = $ColorRect/SubViewport/Environment/level_2/door12
@@ -81,8 +86,7 @@ func warehouse_2_finished():
 func cafe_finished():
 	$ColorRect/SubViewport/Environment/level_2/door10.toggle_invisible_wall()
 	$ColorRect/SubViewport/Environment/level_2/door10.unlock()
-	print("CAFE DONEZO")
-	##continue here
+	$ColorRect/SubViewport/Environment/level_2/door4.unlock()
 
 
 func _on_spawn_timer_timeout() -> void:
@@ -92,12 +96,10 @@ func _on_spawn_timer_timeout() -> void:
 	enemy_counter += 1
 	var new_enemy = enemy_2.instantiate()
 	spawn_pipe_index += 1
-	if spawn_pipe_index > 3:
-		spawn_pipe_index = 1
-	match spawn_pipe_index:
-		1: new_enemy.position =  spawn_point_parent.get_child(2).global_position
-		2: new_enemy.position = spawn_point_parent.get_child(1).global_position
-		3: new_enemy.position = spawn_point_parent.get_child(0).global_position
+	if spawn_pipe_index > spawn_pipe_index_max -1:
+		spawn_pipe_index = 0
+	new_enemy.position =  spawn_point_parent.get_child(spawn_pipe_index).global_position
+	print(new_enemy.position)
 	env.add_child(new_enemy)
 	new_enemy.died.connect(remove_enemy)
 	enemy_list.append(new_enemy)
@@ -106,4 +108,25 @@ func remove_enemy(enemy_to_remove):
 	enemy_list.erase(enemy_to_remove)
 
 
+func door_4_opening():
+	if trigger_endgame:
+		return
+	trigger_endgame = true
+	$ColorRect/SubViewport/Environment/level_2/door4.toggle_stay_open()
+	$ColorRect/SubViewport/Environment/level_2/door.lock()
+	$ColorRect/SubViewport/Environment/level_2/door6.toggle_stay_open()
+	$ColorRect/SubViewport/Environment/level_2/door2.toggle_stay_open()
+	$ColorRect/SubViewport/Environment/level_2/door5.toggle_stay_open()
+	$ColorRect/SubViewport/Environment/level_2/door16.toggle_stay_open()
+	$ColorRect/SubViewport/Environment/level_2/door7.toggle_stay_open()
+	$ColorRect/SubViewport/Environment/level_2/door8.toggle_stay_open()
+	$ColorRect/SubViewport/Environment/level_2/door9.toggle_stay_open()
+	$ColorRect/SubViewport/Environment/level_2/door15.toggle_stay_open()
+	$ColorRect/SubViewport/Environment/level_2/door3.toggle_stay_open()
+	$ColorRect/SubViewport/Environment/level_2/door11.toggle_stay_open()
+	$ColorRect/SubViewport/Environment/level_2/door13.toggle_stay_open()
+	$ColorRect/SubViewport/Environment/level_2/door12.toggle_stay_open()
+	$ColorRect/SubViewport/Environment/level_2/door10.toggle_stay_open()
+	await get_tree().create_timer(2).timeout
+	$ColorRect/SubViewport/Environment/enemy_1.process_mode = Node.PROCESS_MODE_ALWAYS
 	
