@@ -12,9 +12,11 @@ var spawn_point_parent
 var spawn_pipe_index = 0
 var spawn_pipe_index_max = 3
 var enemy_list = []
-var enemy_limit = 10
+var enemy_limit = 15
 var spawn_limit_reached = false
 var enemy_counter = 0
+
+var endgame_round_counter = 1
 
 ##triggers
 var warehouse_2_trigger = false
@@ -25,19 +27,24 @@ func _ready() -> void:
 	$ColorRect/SubViewport/Environment/level_2/door4.opening.connect(door_4_opening)
 	await get_tree().create_timer(1).timeout
 	text_controller.display_text("I need to find a way out of here...")
-	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	if warehouse_2_trigger and spawn_limit_reached and enemy_list.is_empty():
+func _process(_delta: float) -> void:
+	if trigger_endgame and spawn_limit_reached and enemy_list.is_empty():
+		enemy_limit += 5
+		endgame_round_counter += 1
 		spawn_limit_reached = false
-		spawn_timer.stop()
-		warehouse_2_finished()
-	if cafe_trigger and spawn_limit_reached and enemy_list.is_empty():
+		spawn_timer.start()
+	elif cafe_trigger and spawn_limit_reached and enemy_list.is_empty():
 		spawn_limit_reached = false
 		spawn_timer.stop()
 		cafe_finished()
+	elif warehouse_2_trigger and spawn_limit_reached and enemy_list.is_empty():
+		spawn_limit_reached = false
+		spawn_timer.stop()
+		warehouse_2_finished()
+	
 		
 
 func _on_warehouse_2_trigger_body_entered(body: Node3D) -> void:
@@ -73,6 +80,19 @@ func trigger_cafe_fight():
 	var door_1 = $ColorRect/SubViewport/Environment/level_2/door10
 	door_1.toggle_invisible_wall()
 	door_1.lock()
+	spawn_limit_reached = false
+	enemy_limit = 20
+	spawn_timer.wait_time = 1.5
+	spawn_timer.start()
+
+
+func trigger_endgame_fight():
+	spawn_point_parent = $ColorRect/SubViewport/Environment/enemy_spawns_endgame
+	spawn_limit_reached = false
+	enemy_counter = 0
+	enemy_limit = 20
+	endgame_round_counter = 1
+	spawn_pipe_index_max = 11
 	spawn_timer.start()
 
 func warehouse_2_finished():
@@ -81,12 +101,16 @@ func warehouse_2_finished():
 	$ColorRect/SubViewport/Environment/level_2/door12.toggle_invisible_wall()
 	$ColorRect/SubViewport/Environment/level_2/door2.unlock()
 	enemy_list.clear()
-	
+	await get_tree().create_timer(2).timeout
+	text_controller.display_text("I need to find the exit")
 
 func cafe_finished():
 	$ColorRect/SubViewport/Environment/level_2/door10.toggle_invisible_wall()
 	$ColorRect/SubViewport/Environment/level_2/door10.unlock()
 	$ColorRect/SubViewport/Environment/level_2/door4.unlock()
+	$ColorRect/SubViewport/Environment/dialogue_door_trigger.call_deferred("monitoring",false)
+	await get_tree().create_timer(1).timeout
+	text_controller.display_text("Time to get out of here!")
 
 
 func _on_spawn_timer_timeout() -> void:
@@ -99,7 +123,6 @@ func _on_spawn_timer_timeout() -> void:
 	if spawn_pipe_index > spawn_pipe_index_max -1:
 		spawn_pipe_index = 0
 	new_enemy.position =  spawn_point_parent.get_child(spawn_pipe_index).global_position
-	print(new_enemy.position)
 	env.add_child(new_enemy)
 	new_enemy.died.connect(remove_enemy)
 	enemy_list.append(new_enemy)
@@ -112,6 +135,7 @@ func door_4_opening():
 	if trigger_endgame:
 		return
 	trigger_endgame = true
+	
 	$ColorRect/SubViewport/Environment/level_2/door4.toggle_stay_open()
 	$ColorRect/SubViewport/Environment/level_2/door.lock()
 	$ColorRect/SubViewport/Environment/level_2/door6.toggle_stay_open()
@@ -127,6 +151,14 @@ func door_4_opening():
 	$ColorRect/SubViewport/Environment/level_2/door13.toggle_stay_open()
 	$ColorRect/SubViewport/Environment/level_2/door12.toggle_stay_open()
 	$ColorRect/SubViewport/Environment/level_2/door10.toggle_stay_open()
+	$ColorRect/SubViewport/Environment/level_2/door10.process_mode = Node.PROCESS_MODE_DISABLED
 	await get_tree().create_timer(2).timeout
 	$ColorRect/SubViewport/Environment/enemy_1.process_mode = Node.PROCESS_MODE_ALWAYS
-	
+	text_controller.display_text("Come and get some!")
+	trigger_endgame_fight()
+	await get_tree().create_timer(10).timeout
+	text_controller.display_text("You will never take me alive!")
+
+func _on_dialogue_door_trigger_body_entered(body: Node3D) -> void:
+	if body.is_in_group("player"):
+		text_controller.display_text("I need to find the key.")

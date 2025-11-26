@@ -1,4 +1,4 @@
-[gd_scene load_steps=68 format=4 uid="uid://ojpwsqqdojet"]
+[gd_scene load_steps=69 format=4 uid="uid://ojpwsqqdojet"]
 
 [ext_resource type="Script" uid="uid://s1nr1cs2xopi" path="res://scripts/level_2_manager.gd" id="1_vwfin"]
 [ext_resource type="Script" uid="uid://d3y7ouwo6arvx" path="res://scripts/cam_move_catcher.gd" id="2_bv48q"]
@@ -425,6 +425,9 @@ metallic_specular = 0.0
 [sub_resource type="BoxShape3D" id="BoxShape3D_vwfin"]
 size = Vector3(5.251343, 4.8380127, 0.7566376)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_va6c3"]
+size = Vector3(1, 2.5809937, 5.0585403)
+
 [node name="layout" type="CanvasLayer"]
 script = ExtResource("1_vwfin")
 
@@ -572,7 +575,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 47.10789, 10.067177, 15.06095
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.889153, 8.469322, 13.862312)
 
 [node name="Player" parent="ColorRect/SubViewport/Environment" instance=ExtResource("17_3buw8")]
-transform = Transform3D(-0.0011693673, 0, 0.99999934, 0, 1, 0, -0.99999934, 0, -0.0011693673, -8.464715, 3.4868908, -10.202888)
+transform = Transform3D(-0.0011693673, 0, 0.99999934, 0, 1, 0, -0.99999934, 0, -0.0011693673, 23.400314, 3.6752625, -0.9607048)
 base_speed = 6.0
 
 [node name="lights" type="Node3D" parent="ColorRect/SubViewport/Environment"]
@@ -1285,7 +1288,15 @@ shape = SubResource("BoxShape3D_vwfin")
 process_mode = 4
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -61.543205, 0.008785725, -0.3911977)
 
+[node name="dialogue_door_trigger" type="Area3D" parent="ColorRect/SubViewport/Environment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -50.788296, 1.7901754, 0)
+
+[node name="collider" type="CollisionShape3D" parent="ColorRect/SubViewport/Environment/dialogue_door_trigger"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.16073608, 0.04200363)
+shape = SubResource("BoxShape3D_va6c3")
+
 [connection signal="timeout" from="spawn_timer" to="." method="_on_spawn_timer_timeout"]
 [connection signal="timeout" from="input_catcher/fire_timer" to="input_catcher" method="_on_fire_timer_timeout"]
 [connection signal="body_entered" from="ColorRect/SubViewport/Environment/warehouse2_trigger" to="." method="_on_warehouse_2_trigger_body_entered"]
 [connection signal="body_entered" from="ColorRect/SubViewport/Environment/cafe_trigger" to="." method="_on_cafe_trigger_body_entered"]
+[connection signal="body_entered" from="ColorRect/SubViewport/Environment/dialogue_door_trigger" to="." method="_on_dialogue_door_trigger_body_entered"]
