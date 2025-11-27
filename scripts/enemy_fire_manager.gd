@@ -6,9 +6,12 @@ var time_to_fire = 0
 @export var fire_min = 2.0
 @export var fire_max = 6.0
 
+var can_fire = true
+
 signal shooting()
 func _ready() -> void:
 	time_to_fire = get_random_time()
+	$"..".died.connect(stop_shooting)
 	
 func _process(delta: float) -> void:
 	if time_to_fire <= 0:
@@ -16,9 +19,13 @@ func _process(delta: float) -> void:
 		time_to_fire = get_random_time()
 	else:
 		time_to_fire -= delta
-	
+
+func stop_shooting():
+	can_fire = false
 	
 func fire():
+	if !can_fire:
+		return
 	shooting.emit()
 	var new_bullet = bullet.instantiate()
 	new_bullet.global_position = global_position

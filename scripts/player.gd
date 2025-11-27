@@ -84,6 +84,7 @@ var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 #tells controllers to stop working
 var dead = false
+signal died()
 
 # ============================================================================
 # INITIALIZATION
@@ -249,8 +250,11 @@ func apply_head_bob(delta: float, input_dir: Vector2) -> void:
 func die():
 	if debug:
 		return
+	died.emit()
 	dead = true
 	anim.play("die")
+	await get_tree().create_timer(1.5).timeout
+	process_mode = Node.PROCESS_MODE_DISABLED
 
 ## Returns current horizontal speed (useful for UI speedometers)
 func get_horizontal_speed() -> float:

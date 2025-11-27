@@ -30,6 +30,7 @@ var enemy_counter = 0
 var round_counter = 1
 
 func _ready() -> void:
+	$ColorRect/SubViewport/Environment/Player.died.connect(player_dead)
 	terminal_1.terminal_activated.connect(terminal_activated)
 	terminal_2.terminal_activated.connect(terminal_activated)
 	if debug:
@@ -96,3 +97,10 @@ func next_round():
 
 func remove_enemy(enemy_to_remove):
 	enemy_list.erase(enemy_to_remove)
+
+
+func player_dead():
+	$ColorRect.fade_to_black(3)
+	await get_tree().create_timer(3.5).timeout
+	SceneLoader.switch_scene("res://scenes/level_1.tscn")
+	

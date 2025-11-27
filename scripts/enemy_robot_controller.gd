@@ -145,7 +145,7 @@ const ANIM_WALK_RIGHT = "walk_right"
 # health variables
 signal health_changed()
 signal died()
-var health : float = 50:
+@export var health : float = 50:
 	get(): return health
 	set(val) : 
 		if health <= 0:

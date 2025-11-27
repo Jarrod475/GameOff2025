@@ -233,6 +233,7 @@ sprite_path = NodePath("GFX")
 camera_path = NodePath("../Player/cam")
 direction_buffer_angle = 60.0
 animation_switch_hysteresis = 0.0
+health = 100.0
 
 [node name="fire_point" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5324575, 0.39512873)

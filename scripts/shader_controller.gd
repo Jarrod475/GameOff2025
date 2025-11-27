@@ -38,6 +38,7 @@ func _process(delta: float) -> void:
 		
 ##when player dies
 func fade_to_black(time = 1.0):
+	print("fading to black")
 	enemy_is_close = false
 	var tween = get_tree().create_tween()
 	tween.tween_property(self,"scanline_brightness",0.0,time)

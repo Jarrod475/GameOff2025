@@ -42,7 +42,6 @@ func _on_terminal_animation_finished(anim_name: StringName) -> void:
 	enemy.process_mode = Node.PROCESS_MODE_ALWAYS
 	await get_tree().create_timer(10).timeout
 	player.process_mode = Node.PROCESS_MODE_DISABLED
-	$ColorRect.enemy_is_close = true
 	enemy.set_target(player)
 	await get_tree().create_timer(2).timeout
 	text_display_bot.display_text("Hello Samuel",2,3,true)
@@ -62,3 +61,5 @@ func _on_terminal_animation_finished(anim_name: StringName) -> void:
 	player.process_mode = Node.PROCESS_MODE_ALWAYS
 	player.die()
 	$ColorRect.fade_to_black(3)
+	await get_tree().create_timer(3.5).timeout
+	SceneLoader.switch_scene("res://scenes/level_1.tscn")

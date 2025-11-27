@@ -32,10 +32,13 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	if trigger_endgame and spawn_limit_reached and enemy_list.is_empty():
+		enemy_counter = 0
 		enemy_limit += 5
+		print("enemy limit is now ", enemy_limit)
 		endgame_round_counter += 1
 		spawn_limit_reached = false
 		spawn_timer.start()
+		print("round ", endgame_round_counter	)
 	elif cafe_trigger and spawn_limit_reached and enemy_list.is_empty():
 		spawn_limit_reached = false
 		spawn_timer.stop()
@@ -68,6 +71,7 @@ func trigger_warehouse_2_fight():
 	var door_1 = $ColorRect/SubViewport/Environment/level_2/door12
 	door_1.toggle_invisible_wall()
 	door_1.lock()
+	enemy_counter = 0
 	spawn_timer.start()
 
 
@@ -80,11 +84,11 @@ func trigger_cafe_fight():
 	var door_1 = $ColorRect/SubViewport/Environment/level_2/door10
 	door_1.toggle_invisible_wall()
 	door_1.lock()
+	enemy_counter = 0
 	spawn_limit_reached = false
 	enemy_limit = 20
 	spawn_timer.wait_time = 1.5
 	spawn_timer.start()
-
 
 func trigger_endgame_fight():
 	spawn_point_parent = $ColorRect/SubViewport/Environment/enemy_spawns_endgame
@@ -108,7 +112,8 @@ func cafe_finished():
 	$ColorRect/SubViewport/Environment/level_2/door10.toggle_invisible_wall()
 	$ColorRect/SubViewport/Environment/level_2/door10.unlock()
 	$ColorRect/SubViewport/Environment/level_2/door4.unlock()
-	$ColorRect/SubViewport/Environment/dialogue_door_trigger.call_deferred("monitoring",false)
+	$ColorRect/SubViewport/Environment/dialogue_door_trigger.monitoring = false
+
 	await get_tree().create_timer(1).timeout
 	text_controller.display_text("Time to get out of here!")
 
@@ -129,6 +134,7 @@ func _on_spawn_timer_timeout() -> void:
 
 func remove_enemy(enemy_to_remove):
 	enemy_list.erase(enemy_to_remove)
+	print(enemy_list.size())
 
 
 func door_4_opening():

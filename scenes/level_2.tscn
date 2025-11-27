@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=4 uid="uid://ojpwsqqdojet"]
+[gd_scene load_steps=72 format=4 uid="uid://ojpwsqqdojet"]
 
 [ext_resource type="Script" uid="uid://s1nr1cs2xopi" path="res://scripts/level_2_manager.gd" id="1_vwfin"]
 [ext_resource type="Script" uid="uid://d3y7ouwo6arvx" path="res://scripts/cam_move_catcher.gd" id="2_bv48q"]
@@ -422,6 +422,38 @@ albedo_color = Color(0, 0, 0, 1)
 metallic = 1.0
 metallic_specular = 0.0
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tcbbl"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_rnf6l"]
+_surfaces = [{
+"aabb": AABB(0.005782604, 5.0763273, -2.5, 1e-05, 11.041039, 5),
+"format": 34896613377,
+"index_count": 72,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAADAAAAAwAFAAEABAAGAAMAAwAHAAUABgAHAAMABwAIAAUABgAJAAcABwAKAAgACQAKAAcACgALAAgACQAMAAoACgANAAsADAANAAoADAAOAA0ADwAQABEADwASABAAEQAQABMAEQATABQAFQAWABcAFQAYABYAGQAaABcAGQAbABoA"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 28,
+"vertex_data": PackedByteArray("AAC5c/9/AAAAALCtAAAAAAAAuXMAAAAAAACwrf9/AAAAALlz//8AAAAAXMcAAAAAAACwrf//AAAAAFzH/38AAAAACOEAAAAAAABcx///AAAAAAjh/38AAAAA/v8AAAAAAAAI4f//AAAAAP7//38AAAAA/////wAAAADCOQAAAAAAALlz/38AAAAAwjn/fwAAAAC5cwAAAAAAALlz//8AAAAAwjn//wAAAAAAAP//AAAAAPY5/38AAAAAAAD/fwAAAAD2Of//AAAAAAAAAAAAAAAA9jn/fwAAAAD2OQAAAAA=")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_h8335"]
+resource_name = "level_2_patch_Plane_006"
+_surfaces = [{
+"aabb": AABB(0.005782604, 5.0763273, -2.5, 1e-05, 11.041039, 5),
+"attribute_data": PackedByteArray("dmN5lUZVCKNGVXmVdmMIo6ZxeZVGVQqppnEIo3ZjCqlGVQyvpnEKqXZjDK9GVUq2pnEMr3ZjSramcUq2GI7Vf0icZY0YjmWNSJzVf0ic9ZoYjvWaMg4AAAAAkg0AAAAAMg6SDRiO1X9InGWNGI5ljUic1X8="),
+"format": 34896613399,
+"index_count": 72,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAADAAAAAwAFAAEABAAGAAMAAwAHAAUABgAHAAMABwAIAAUABgAJAAcABwAKAAgACQAKAAcACgALAAgACQAMAAoACgANAAsADAANAAoADAAOAA0ADwAQABEADwASABAAEQAQABMAEQATABQAFQAWABcAFQAYABYAGQAaABsAGQAcABoA"),
+"material": SubResource("StandardMaterial3D_tcbbl"),
+"primitive": 3,
+"uv_scale": Vector4(18.199133, 19.039152, 0, 0),
+"vertex_count": 29,
+"vertex_data": PackedByteArray("AAC5c/9///8AALCtAAD//wAAuXMAAP//AACwrf9///8AALlz/////wAAXMcAAP//AACwrf////8AAFzH/3///wAACOEAAP//AABcx/////8AAAjh/3///wAA/v8AAP//AAAI4f////8AAP7//3///wAA////////AADCOQAAVNUAALlz/39U1QAAwjn/f1TVAAC5cwAAVNUAALlz//9U1QAAwjn//1TVAAAAAP////8AAPY5/3///wAAAAD/f///AAD2Of////8AAAAAAABU1QAA9jn/f1TVAAAAAP9/VNUAAPY5AABU1f+//3//v/9//7//f/+//3//v/9//7//f/+//3//v/9//7//f/+//3//v/9//7//f/+//3//v/9//7//f1TVVNVU1VTVVNVU1VTVVNVU1VTVVNVU1f+//3//v/9//7//f/+//39U1VTVVNVU1VTVVNVU1VTV")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_rnf6l")
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_vwfin"]
 size = Vector3(5.251343, 4.8380127, 0.7566376)
 
@@ -513,6 +545,7 @@ texture = ExtResource("9_va6c3")
 expand_mode = 1
 
 [node name="Environment" type="Node3D" parent="ColorRect/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.737957, 0, 0)
 
 [node name="enemy_spawns_wh2" type="Node3D" parent="ColorRect/SubViewport/Environment"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.232418, -3.482665, -21.122894)
@@ -575,7 +608,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 47.10789, 10.067177, 15.06095
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.889153, 8.469322, 13.862312)
 
 [node name="Player" parent="ColorRect/SubViewport/Environment" instance=ExtResource("17_3buw8")]
-transform = Transform3D(-0.0011693673, 0, 0.99999934, 0, 1, 0, -0.99999934, 0, -0.0011693673, 23.400314, 3.6752625, -0.9607048)
+transform = Transform3D(-0.0011693673, 0, 0.99999934, 0, 1, 0, -0.99999934, 0, -0.0011693673, 22.847645, 3.6752625, 0.33726883)
 base_speed = 6.0
 
 [node name="lights" type="Node3D" parent="ColorRect/SubViewport/Environment"]
@@ -1269,6 +1302,20 @@ mesh = SubResource("ArrayMesh_i2cay")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("24_63d2t")
 surface_material_override/1 = SubResource("StandardMaterial3D_va6c3")
+
+[node name="level_2_updated_base" type="Node3D" parent="ColorRect/SubViewport/Environment/level_2"]
+
+[node name="base_patch" type="MeshInstance3D" parent="ColorRect/SubViewport/Environment/level_2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.08512688, 0, 0)
+mesh = SubResource("ArrayMesh_h8335")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("12_73m23")
+
+[node name="base_patch2" type="MeshInstance3D" parent="ColorRect/SubViewport/Environment/level_2"]
+transform = Transform3D(1, -8.742278e-08, 8.742278e-08, -8.742278e-08, -1, 0, 8.742278e-08, -7.642742e-15, -1, 0.08512688, 21.476542, 0)
+mesh = SubResource("ArrayMesh_h8335")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("12_73m23")
 
 [node name="warehouse2_trigger" type="Area3D" parent="ColorRect/SubViewport/Environment"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.532125, 0, -15.223862)
