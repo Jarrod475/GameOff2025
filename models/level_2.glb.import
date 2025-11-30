@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://we1t5cjwb47o"
-path="res://.godot/imported/level_2.glb-a4a919913860295e1b198ad0c6d4ae8a.scn"
+path="res://.godot/imported/level_2.glb-a5bce4d1840225db4e71f4444b0eed10.scn"
 
 [deps]
 
-source_file="res://scenes/level_2.glb"
-dest_files=["res://.godot/imported/level_2.glb-a4a919913860295e1b198ad0c6d4ae8a.scn"]
+source_file="res://models/level_2.glb"
+dest_files=["res://.godot/imported/level_2.glb-a5bce4d1840225db4e71f4444b0eed10.scn"]
 
 [params]
 

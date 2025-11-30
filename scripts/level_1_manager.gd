@@ -81,9 +81,9 @@ func next_round():
 		text_controller.display_text("Need to reset the ventilation system to get passed!")
 	if round_counter == 3:
 		await  get_tree().create_timer(1).timeout
-		text_controller.display_text("One more and the system should be flushed of them varmints!")
+		text_controller.display_text("One more and the system should be flushed clean!")
 	if round_counter == 4:
-		text_controller.display_text("Easy Peazy! I should probably find myself a bigger gun...")
+		text_controller.display_text("Easy Peazy! Time to find the exit...")
 		door_2.unlock()
 		return
 	enemy_counter = 0
@@ -104,3 +104,8 @@ func player_dead():
 	await get_tree().create_timer(3.5).timeout
 	SceneLoader.switch_scene("res://scenes/level_1.tscn")
 	
+
+##for the new scene loader
+func _on_area_3d_body_shape_entered(body_rid: RID, body: Node3D, body_shape_index: int, local_shape_index: int) -> void:
+	if body.is_in_group("player"):
+		SceneLoader.switch_scene("res://scenes/level_2.tscn")

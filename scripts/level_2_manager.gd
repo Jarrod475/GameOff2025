@@ -6,7 +6,7 @@ var spawn_point_parent
 @onready var enemy_1 = preload("res://scenes/enemy_1.tscn")
 
 @onready var text_controller = $ColorRect/SubViewport/HUD/text_display_bottom
-
+@onready var round_lbl = $ColorRect/SubViewport/HUD/round_lbl
 
 @onready var spawn_timer = $spawn_timer
 var spawn_pipe_index = 0
@@ -24,6 +24,7 @@ var cafe_trigger = false
 var trigger_endgame = false
 
 func _ready() -> void:
+	$ColorRect/SubViewport/Environment/Player.died.connect(player_dead)
 	$ColorRect/SubViewport/Environment/level_2/door4.opening.connect(door_4_opening)
 	await get_tree().create_timer(1).timeout
 	text_controller.display_text("I need to find a way out of here...")
@@ -36,6 +37,7 @@ func _process(_delta: float) -> void:
 		enemy_limit += 5
 		print("enemy limit is now ", enemy_limit)
 		endgame_round_counter += 1
+		round_lbl.text = "Round " + str(endgame_round_counter)
 		spawn_limit_reached = false
 		spawn_timer.start()
 		print("round ", endgame_round_counter	)
@@ -164,6 +166,14 @@ func door_4_opening():
 	trigger_endgame_fight()
 	await get_tree().create_timer(10).timeout
 	text_controller.display_text("You will never take me alive!")
+	var new_tween = get_tree().create_tween()
+	new_tween.tween_property(round_lbl,"modulate",Color(1,1,1,1),1)
+
+
+func player_dead():
+	$ColorRect.fade_to_black(3)
+	await get_tree().create_timer(3.5).timeout
+	SceneLoader.switch_scene("res://scenes/level_2.tscn")
 
 func _on_dialogue_door_trigger_body_entered(body: Node3D) -> void:
 	if body.is_in_group("player"):

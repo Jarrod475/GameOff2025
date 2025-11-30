@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="horror_test_gamejam"
+config/name="RobotsRevenge"
 run/main_scene="uid://ducml2scdggkp"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"

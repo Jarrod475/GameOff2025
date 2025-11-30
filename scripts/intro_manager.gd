@@ -34,16 +34,15 @@ func _on_terminal_animation_finished(anim_name: StringName) -> void:
 	await get_tree().create_timer(2).timeout
 	text_display_bot.display_text("Great...")
 	await get_tree().create_timer(1).timeout
-	text_display_bot.display_text("Another power outage. Samuel see if you can find a")
+	text_display_bot.display_text("Another power outage. Where is my-")
 	await get_tree().create_timer(3).timeout
 	enemy.visible = true
 	await get_tree().create_timer(1).timeout
-	enemy.set_target(move_point)
-	enemy.process_mode = Node.PROCESS_MODE_ALWAYS
-	await get_tree().create_timer(10).timeout
-	player.process_mode = Node.PROCESS_MODE_DISABLED
 	enemy.set_target(player)
-	await get_tree().create_timer(2).timeout
+	enemy.process_mode = Node.PROCESS_MODE_ALWAYS
+	await get_tree().create_timer(5).timeout
+	player.process_mode = Node.PROCESS_MODE_DISABLED
+	await get_tree().create_timer(1).timeout
 	text_display_bot.display_text("Hello Samuel",2,3,true)
 	await get_tree().create_timer(2).timeout
 	text_display_bot.display_text("This agent requires additional access to achieve its goal",2,5,true)
