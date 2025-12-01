@@ -1,4 +1,4 @@
-[gd_scene load_steps=73 format=4 uid="uid://ojpwsqqdojet"]
+[gd_scene load_steps=74 format=4 uid="uid://ojpwsqqdojet"]
 
 [ext_resource type="Script" uid="uid://s1nr1cs2xopi" path="res://scripts/level_2_manager.gd" id="1_vwfin"]
 [ext_resource type="Script" uid="uid://d3y7ouwo6arvx" path="res://scripts/cam_move_catcher.gd" id="2_bv48q"]
@@ -464,6 +464,9 @@ size = Vector3(4.8057556, 4.8380127, 4.479748)
 [sub_resource type="BoxShape3D" id="BoxShape3D_va6c3"]
 size = Vector3(1, 2.5809937, 5.0585403)
 
+[sub_resource type="Theme" id="Theme_pc3at"]
+default_font = ExtResource("15_igmy8")
+
 [node name="layout" type="CanvasLayer"]
 script = ExtResource("1_vwfin")
 
@@ -565,7 +568,6 @@ text = "Round 2"
 vertical_alignment = 1
 
 [node name="Environment" type="Node3D" parent="ColorRect/SubViewport"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.068394, 0, 0)
 
 [node name="enemy_spawns_wh2" type="Node3D" parent="ColorRect/SubViewport/Environment"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.232418, -3.482665, -21.122894)
@@ -628,7 +630,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 47.10789, 10.067177, 15.06095
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.889153, 8.469322, 13.862312)
 
 [node name="Player" parent="ColorRect/SubViewport/Environment" instance=ExtResource("17_3buw8")]
-transform = Transform3D(-0.0011693673, 0, 0.99999934, 0, 1, 0, -0.99999934, 0, -0.0011693673, 22.847645, 3.6752625, 0.33726883)
+transform = Transform3D(-0.0011693673, 0, 0.99999934, 0, 1, 0, -0.99999934, 0, -0.0011693673, 22.184053, 3.6752625, 0.12146664)
 base_speed = 6.0
 
 [node name="lights" type="Node3D" parent="ColorRect/SubViewport/Environment"]
@@ -687,7 +689,6 @@ mesh = SubResource("ArrayMesh_nafej")
 skeleton = NodePath("")
 
 [node name="base" type="MeshInstance3D" parent="ColorRect/SubViewport/Environment/level_2" groups=["terrain"]]
-visible = false
 mesh = SubResource("ArrayMesh_jqrxs")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("12_73m23")
@@ -1363,8 +1364,65 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -50.788296, 1.7901754, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.16073608, 0.04200363)
 shape = SubResource("BoxShape3D_va6c3")
 
+[node name="exit_pnl" type="ColorRect" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -150.0
+offset_right = 300.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_pc3at")
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="exit_pnl"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -74.0
+offset_top = 44.0
+offset_right = 75.0
+offset_bottom = 65.0
+grow_horizontal = 2
+text = "Exit to main menu?"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="exit_pnl"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -158.0
+offset_top = -20.0
+offset_right = 158.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Button" type="Button" parent="exit_pnl/HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 2
+text = "Yes"
+
+[node name="Button2" type="Button" parent="exit_pnl/HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+text = "No"
+
 [connection signal="timeout" from="spawn_timer" to="." method="_on_spawn_timer_timeout"]
 [connection signal="timeout" from="input_catcher/fire_timer" to="input_catcher" method="_on_fire_timer_timeout"]
 [connection signal="body_entered" from="ColorRect/SubViewport/Environment/warehouse2_trigger" to="." method="_on_warehouse_2_trigger_body_entered"]
 [connection signal="body_entered" from="ColorRect/SubViewport/Environment/cafe_trigger" to="." method="_on_cafe_trigger_body_entered"]
 [connection signal="body_entered" from="ColorRect/SubViewport/Environment/dialogue_door_trigger" to="." method="_on_dialogue_door_trigger_body_entered"]
+[connection signal="pressed" from="exit_pnl/HBoxContainer/Button" to="." method="_on_exit_pnl_yes_pressed"]
+[connection signal="pressed" from="exit_pnl/HBoxContainer/Button2" to="." method="_on_exit_pnl_no_pressed"]

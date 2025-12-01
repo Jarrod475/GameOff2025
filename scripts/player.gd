@@ -253,8 +253,7 @@ func die():
 	died.emit()
 	dead = true
 	anim.play("die")
-	await get_tree().create_timer(1.5).timeout
-	process_mode = Node.PROCESS_MODE_DISABLED
+	
 
 ## Returns current horizontal speed (useful for UI speedometers)
 func get_horizontal_speed() -> float:
@@ -267,3 +266,8 @@ func is_sprinting() -> bool:
 ## Manually set mouse capture state (useful for menus)
 func set_mouse_captured(captured: bool) -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED if captured else Input.MOUSE_MODE_VISIBLE
+
+
+func _on_player_anim_animation_finished(anim_name: StringName) -> void:
+	if anim_name == "die":
+		process_mode = Node.PROCESS_MODE_DISABLED

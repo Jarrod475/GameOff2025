@@ -21,7 +21,7 @@ var terminal_1_active = false
 var terminal_2_active = false
 
 var enemy_list = []
-var enemy_limit = 1
+var enemy_limit = 5
 var spawn_limit_reached = false
 var enemy_counter = 0
 
@@ -29,8 +29,11 @@ var enemy_counter = 0
 
 var round_counter = 1
 
+@onready var exit_pnl = $exit_pnl
+@onready var player = $ColorRect/SubViewport/Environment/Player
+
 func _ready() -> void:
-	$ColorRect/SubViewport/Environment/Player.died.connect(player_dead)
+	player.died.connect(player_dead)
 	terminal_1.terminal_activated.connect(terminal_activated)
 	terminal_2.terminal_activated.connect(terminal_activated)
 	if debug:
@@ -89,7 +92,7 @@ func next_round():
 	enemy_counter = 0
 	spawn_limit_reached = false
 	enemy_list.clear()
-	enemy_limit += 10
+	enemy_limit += 5
 	terminal_1_active = false
 	terminal_2_active = false
 	terminal_1.reset_terminal()
@@ -109,3 +112,22 @@ func player_dead():
 func _on_area_3d_body_shape_entered(body_rid: RID, body: Node3D, body_shape_index: int, local_shape_index: int) -> void:
 	if body.is_in_group("player"):
 		SceneLoader.switch_scene("res://scenes/level_2.tscn")
+
+
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("ui_cancel"):
+		exit_pnl.visible = !exit_pnl.visible
+		if exit_pnl.visible:
+			player.set_mouse_captured(false)
+		else:
+			player.set_mouse_captured(true)
+
+
+func _on_exit_pnl_yes_pressed() -> void:
+	SceneLoader.switch_scene("res://scenes/main_menu.tscn")
+
+
+func _on_exit_pnl_no_pressed() -> void:
+	exit_pnl.visible = false
+	player.set_mouse_captured(true)

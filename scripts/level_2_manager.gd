@@ -12,7 +12,7 @@ var spawn_point_parent
 var spawn_pipe_index = 0
 var spawn_pipe_index_max = 3
 var enemy_list = []
-var enemy_limit = 15
+var enemy_limit = 8
 var spawn_limit_reached = false
 var enemy_counter = 0
 
@@ -22,6 +22,10 @@ var endgame_round_counter = 1
 var warehouse_2_trigger = false
 var cafe_trigger = false
 var trigger_endgame = false
+
+
+@onready var exit_pnl = $exit_pnl
+@onready var player = $ColorRect/SubViewport/Environment/Player
 
 func _ready() -> void:
 	$ColorRect/SubViewport/Environment/Player.died.connect(player_dead)
@@ -88,8 +92,8 @@ func trigger_cafe_fight():
 	door_1.lock()
 	enemy_counter = 0
 	spawn_limit_reached = false
-	enemy_limit = 20
-	spawn_timer.wait_time = 1.5
+	enemy_limit = 15
+	spawn_timer.wait_time = 2.0
 	spawn_timer.start()
 
 func trigger_endgame_fight():
@@ -129,7 +133,9 @@ func _on_spawn_timer_timeout() -> void:
 	spawn_pipe_index += 1
 	if spawn_pipe_index > spawn_pipe_index_max -1:
 		spawn_pipe_index = 0
-	new_enemy.position =  spawn_point_parent.get_child(spawn_pipe_index).global_position
+	new_enemy.global_position = spawn_point_parent.get_child(spawn_pipe_index).global_position
+	#new_enemy.position =  spawn_point_parent.get_child(spawn_pipe_index).global_position
+	print(new_enemy.position)
 	env.add_child(new_enemy)
 	new_enemy.died.connect(remove_enemy)
 	enemy_list.append(new_enemy)
@@ -178,3 +184,20 @@ func player_dead():
 func _on_dialogue_door_trigger_body_entered(body: Node3D) -> void:
 	if body.is_in_group("player"):
 		text_controller.display_text("I need to find the key.")
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("ui_cancel"):
+		exit_pnl.visible = !exit_pnl.visible
+		if exit_pnl.visible:
+			player.set_mouse_captured(false)
+		else:
+			player.set_mouse_captured(true)
+
+
+func _on_exit_pnl_yes_pressed() -> void:
+	SceneLoader.switch_scene("res://scenes/main_menu.tscn")
+
+
+func _on_exit_pnl_no_pressed() -> void:
+	exit_pnl.visible = false
+	player.set_mouse_captured(true)

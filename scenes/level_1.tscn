@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=4 uid="uid://ducml2scdggkp"]
+[gd_scene load_steps=53 format=4 uid="uid://ducml2scdggkp"]
 
 [ext_resource type="Script" uid="uid://dou76rxoc6tpc" path="res://scripts/level_1_manager.gd" id="1_x2xxo"]
 [ext_resource type="Script" uid="uid://d3y7ouwo6arvx" path="res://scripts/cam_move_catcher.gd" id="2_2cbcq"]
@@ -19,6 +19,7 @@
 [ext_resource type="Material" uid="uid://b51a6fh4c7ey2" path="res://materials/accept_green.tres" id="17_2cbcq"]
 [ext_resource type="PackedScene" uid="uid://4usvgebcv5fj" path="res://scenes/player.tscn" id="17_hg84p"]
 [ext_resource type="PackedScene" uid="uid://djrl1asykywps" path="res://scenes/terminal.tscn" id="18_1aans"]
+[ext_resource type="FontFile" uid="uid://dhvx4kk6q8b61" path="res://Misc/Tektur-VariableFont_wdth,wght.ttf" id="20_isj1j"]
 
 [sub_resource type="Animation" id="Animation_ppeh2"]
 length = 0.001
@@ -334,6 +335,9 @@ polygons = [PackedInt32Array(198, 199, 200), PackedInt32Array(199, 201, 200), Pa
 [sub_resource type="BoxShape3D" id="BoxShape3D_x2xxo"]
 size = Vector3(3.123291, 1, 5.411743)
 
+[sub_resource type="Theme" id="Theme_so66j"]
+default_font = ExtResource("20_isj1j")
+
 [node name="layout" type="CanvasLayer"]
 script = ExtResource("1_x2xxo")
 
@@ -547,6 +551,63 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.733852, 2.919258, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.15314484, 0.0096457, 0.056863546)
 shape = SubResource("BoxShape3D_x2xxo")
 
+[node name="exit_pnl" type="ColorRect" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -150.0
+offset_right = 300.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_so66j")
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="exit_pnl"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -74.0
+offset_top = 44.0
+offset_right = 75.0
+offset_bottom = 65.0
+grow_horizontal = 2
+text = "Exit to main menu?"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="exit_pnl"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -158.0
+offset_top = -20.0
+offset_right = 158.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Button" type="Button" parent="exit_pnl/HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 2
+text = "Yes"
+
+[node name="Button2" type="Button" parent="exit_pnl/HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+text = "No"
+
 [connection signal="timeout" from="spawn_timer" to="." method="_on_spawn_timer_timeout"]
 [connection signal="timeout" from="input_catcher/fire_timer" to="input_catcher" method="_on_fire_timer_timeout"]
 [connection signal="body_shape_entered" from="ColorRect/SubViewport/Environment/Area3D" to="." method="_on_area_3d_body_shape_entered"]
+[connection signal="pressed" from="exit_pnl/HBoxContainer/Button" to="." method="_on_exit_pnl_yes_pressed"]
+[connection signal="pressed" from="exit_pnl/HBoxContainer/Button2" to="." method="_on_exit_pnl_no_pressed"]
